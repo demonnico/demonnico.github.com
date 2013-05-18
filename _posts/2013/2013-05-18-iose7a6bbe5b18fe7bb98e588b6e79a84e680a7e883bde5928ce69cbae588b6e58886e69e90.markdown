@@ -7,7 +7,6 @@ slug: ios%e7%a6%bb%e5%b1%8f%e7%bb%98%e5%88%b6%e7%9a%84%e6%80%a7%e8%83%bd%e5%92%8
 title: iOS离屏绘制的性能和机制分析
 wordpress_id: 208
 categories:
-- 文章翻译
 tags:
 - CALayer
 - IOS
