@@ -20,9 +20,8 @@ tags:
 在[UIView beginAnimations:nil context:NULL] 后设置好动画的一些属性之后，[UIView commitAnimations]然后播放，之后用了Block之后发现原来可以这么简单，最简单的动画一句话就可以搞定
 
     
-    + (void)animateWithDuration:(NSTimeInterval)duration animations:(void (^)(void))animations
-     NS_AVAILABLE_IOS(4_0);// delay = 0.0, options = 0, completion = NULL
-
+    + (void)animateWithDuration:(NSTimeInterval)duration 
+    				  animations:(void (^)	(void))animations
 
 于是就一直这么用了。但直到前几天才发现如果这么用的话，应用在5.0之前的系统跑可能是有问题的。
 
@@ -30,15 +29,14 @@ tags:
 
     
     + (void)animateWithDuration:(NSTimeInterval)duration
-     delay:(NSTimeInterval)delay
-     options:(UIViewAnimationOptions)options 
-    animations:(void (^)(void))animations 
-    completion:(void (^)(BOOL finished))completion
-     NS_AVAILABLE_IOS(4_0);
+					      delay:(NSTimeInterval)delay
+				        options:(UIViewAnimationOptions)options 
+    				 animations:(void (^)(void))animations 
+	  				 completion:(void (^)(BOOL finished))completion
 
 
 因为在5.0之前，动画播放的时候，系统会把整个应用内所有的事件相应都停止，在苹果的官方[document](http://developer.apple.com/library/ios/#documentation/uikit/reference/UIView_Class/UIView/UIView.html#//apple_ref/occ/clm/UIView/animateWithDuration:delay:options:animations:completion:)里也可以找到说明：
 
-During an animation, user interactions are temporarily disabled for the views being animated. (Prior to iOS 5, user interactions are disabled for the entire application.)
+	During an animation, user interactions are temporarily disabled for the views being animated. (Prior to iOS 5, user interactions are disabled for the entire application.)
 
 假设你的动画时间很长（循环播放淡出淡出等等），那有会造成界面好像卡在那边，不管你怎么点击，事件都不会得到相应。([stackOverFlow](http://stackoverflow.com/questions/3897279/difference-between-uiview-beginanimationscontext-and-uiview-animatewithdura))

@@ -27,7 +27,7 @@ tags:
 
 为了了解性能是如何受到影响的，我们需要进一步地观察iOS里图形实现背后的一些内容。下面这张图呈现了不同的frameworks和libraries之间的一些联系：
 
-![](http://img.hb.aicdn.com/853a9e458dc4255f057779ad61980f9ec2d5cd7562e4-2eL8wb_fw580)
+![](http://photo.yupoo.com/demon42111915/CRYk1ku8/medish.jpg)
 
 在最顶层的就是UIKit，一个在iOS中用来管理用户图形交互的Objc高级的框架，它由一系列的集合类构成，例如UIButton、UILabel，每一个都负责他们指定的UI Control角色。UIKit本身构建在一个叫Core Animation的框架之上，它因为被用于处理更为强大的平滑的转场效果而引入OS X Leopard和iOS而出名。
 
@@ -41,51 +41,25 @@ tags:
 
 而离屏绘制(Offscreen drawing)的话就是指GPU一边在当前屏幕上进行绘制，而另一边在屏幕还没有处理图像信息之前通过CPU来生成图像信息的处理过程。在iOS当中，离屏绘制在以下的情况下会自动触发：
 
-
-
-	
-  * Core Graphics(任何以CG开头的类)
-
-	
-  * 在drawRect方法里，甚至是空方法实现
-
-	
-  * 所有shouldRasterize属性是YES的CALayers对象
-
-	
-  * 所有用了masks(setMasksToBounds)和动态阴影的(setShadow*)的CALayers对象
-
-	
-  * 所有文字的绘制，包括CoreText
-
-	
-  * Group opacity(UIViewGroupOpacity)
+    * Core Graphics(任何以CG开头的类)
+	* 在drawRect方法里，甚至是空方法实现
+	* 所有shouldRasterize属性是YES的CALayers对象	
+	* 所有用了masks(setMasksToBounds)和动态阴影的(setShadow*)的CALayers对象
+	* 所有文字的绘制，包括CoreText
+	* Group opacity(UIViewGroupOpacity)
 
 
 总地来说，当有涉及到动画的时候离屏绘制就会影响到性能，你可以通过Instruments进行真机调试，从而检测到底是哪部分UI正在进行离屏绘制：
 
 	
   1. 接入设备
-
-	
-  2. 在XCode的Developer Applications里打开Instruments（Command+Shift+i） ![](http://img.hb.aicdn.com/043a81521a988da4039dc2e737bc1492dc0df5d11cd27-J2BiEu_fw580)
-
-	
-  3. 选择iOS>Graphics>Core Animation template ![](http://img.hb.aicdn.com/4180449eba1da399f12ea6e2a656c1939e7e08b9147b7-SiVK54_fw580)
-
-	
-  4. 打开详情面板，选择适当的窗口模式![](http://img.hb.aicdn.com/de49846da053e230438ff1241a703b0bb8cbf6bf148c3-fNMUq0_fw580)[
-](http://media.tumblr.com/tumblr_mdykk1P6yi1qatp4h.png)
-
-	
-  5. 选择你的target设备
-
-	
+  2. 在XCode的Developer Applications里打开Instruments（Command+Shift+i） ![](http://pic.yupoo.com/demon42111915/CRYj9u3F/medish.jpg)
+  3. 选择iOS>Graphics>Core Animation template ![](http://photo.yupoo.com/demon42111915/CRYj8kna/medish.jpg)
+  4. 打开详情面板，选择适当的窗口模式![](http://photo.yupoo.com/demon42111915/CRYj7Ik3/medish.jpg)[
+]	
+  5. 选择你的target设备	
   6. 检查Color Offscreen-Rendered Yellow的debug选项
-
-	
-  7. 在你设备上所有的离屏绘制都会呈现出黄色的色调![](http://img.hb.aicdn.com/cd3e71115d62a3a234d2ada4b93a4b209eacaf41c3f3-RRriU0_fw580)[
-](http://media.tumblr.com/tumblr_mekbsdADoh1qatp4h.png)
+  7. 在你设备上所有的离屏绘制都会呈现出黄色的色调![](http://photo.yupoo.com/demon42111915/CRYj7ix4/medish.jpg)
 
 
 现在让我们逐一检查上一篇文章里涉及的一些技术点的性能表现。
@@ -224,7 +198,7 @@ UIGraphicsBeginImageContextWithOptions第二个参数为NO的话确保我们创�
 
 为了确保我们新建的BHybird类能正常使用，在Interface Builder里我们赋值一个button，把实现类改成CBHybird后，把button的content内容改为_CGContext-generated image（_便于区分）。是驴是马，咱们cmd+R跑起来试试~
 
-[![](http://img.hb.aicdn.com/8e0ab532c63bb24644ff31b7dbf5be936339ea7b16418-R8VllP_fw580)](http://media.tumblr.com/tumblr_mdyk9tp3Me1qatp4h.png)
+![](http://photo.yupoo.com/demon42111915/CRYj7cxT/medish.jpg)
 
 完整的子类实现代码在[这里](https://github.com/demon1105/custom-UIButton/blob/master/Custom%20UIButtons/CBHybrid.m)~~~
 

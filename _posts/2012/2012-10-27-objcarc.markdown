@@ -19,12 +19,6 @@ xcode好像升级到4.3之后就多了个[ARC](http://clang.llvm.org/docs/Automa
 
 因为之前做的项目都不是基于ARC的，所以刚开始也没有关注这一点，后来在github上看到一些有意思的开源的库基于ARC的，所以查了一下设置，在这里做一个记录:
 
-
-
-	
-  * 如果你的project是基于ARC的，那么在target的building pharses里面需要对非ARC的文件设置为:-fno-objc-arc
-
-	
-  * 反之，如果project是不基于ARC的，就需要对ARC的文件设置:-fobjc-arc
+>	如果你的project是基于ARC的，那么在target的building pharses里面需要对非ARC的文件设置为:-fno-objc-arc，反之，如果project是不基于ARC的，就需要对ARC的文件设置:-f-objc-arc
 
 

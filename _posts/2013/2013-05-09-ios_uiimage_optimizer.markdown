@@ -37,16 +37,11 @@ png格式的图片有alpha通道，jpeg则没有。png无损压缩，jpeg允许�
 
 来看一下一个图片的空间消耗：
 
+	  1. 磁盘空间或者通过internet传输所消耗的空间
 
+	  2. 解压缩空间，通常是长X宽X高X4字节（RGBA）
 
-	
-  1. 磁盘空间或者通过internet传输所消耗的空间
-
-	
-  2. 解压缩空间，通常是长X宽X高X4字节（RGBA）
-
-	
-  3. 当显示在一个view中时，view本身也需要空间来存储layer
+	  3. 当显示在一个view中时，view本身也需要空间来存储layer
 
 
 对于这里的第一个问题，有一个可能的优化方法：将压缩的文件拷贝到内存中不如映射到内存中，NSData有能力来假设一块磁盘空间是在内存中的，这样当访问这个图片时实际上就是从磁盘访问而不是从内存。据说CGImage知道哪种访问方式是最高效的，UIImage只是将CGImage封装了一下。
@@ -54,21 +49,17 @@ png格式的图片有alpha通道，jpeg则没有。png无损压缩，jpeg允许�
 对于“将这些像素显示到屏幕上最快要多久？”这个问题，显示一个图片所消耗的时间由以下三个因素决定：
 
 	
-  1. 从磁盘上alloc/init UIImage的时间
+	  1. 从磁盘上alloc/init UIImage的时间
 
-	
-  2. 解压缩的时间
+	  2. 解压缩的时间
 
-	
-  3. 将解压缩后的比特转换成CGContext的时间，通常需要改变尺寸，混合，抗锯齿工作。
+	  3. 将解压缩后的比特转换成CGContext的时间，通常需要改变尺寸，混合，抗锯齿工作。
 
 
 要逐一解答各个问题，我们需要一个benchmark来测量。
 
 
 ## 测试环境和测试内容
-
-
 
 
 我做了一个在iOS设备上运行的[benchmark app](https://github.com/Cocoanetics/Cocoanetics-Benchmarks)。对优化和未优化的png图片以及不同尺寸的图片进行了测试，最小时间单位为1ms，不是特别精确，但已经有足够的参考价值了。
@@ -78,24 +69,12 @@ png格式的图片有alpha通道，jpeg则没有。png无损压缩，jpeg允许�
 ![Flower 2048x1536 90 300x225](http://longtimenoc.com/wordpress/wp-content/uploads/2012/01/iOSFlower_2048x1536.90-300x225.jpg)
 
 以下为各个设备的硬件参数，来自Wikipedia：
-
-
-
 	
-  * iPhone 3G:Samsung 32-bit RISC ARM11 620 MHz 处理器 (降频到 412 MHz), PowerVR MBX Lite 3D GPU, 128 MB eDRAM
-
-	
-  * iPhone 3GS: Samsung APL0298C05 芯片，ARM Cortex-A8架构，降频到600MHz(从833MHz)，集成PowerVR SGX 535 GPU，256 MB eDRAM。
-
-	
-  * iPhone 4:基于ARM Cortex-A8的Apple A4芯片，集成 PowerVR SGX 535 GPU，在iPad中频率为1GHz，iPhone 4中的频率没有披露(译者注：不都说是800MHz么，还有512MB RAM都忘了写了，不过这些不说大家也知道)
-
-	
-  * iPad 1:1GHz Apple A4芯片 256MB DDR Ram (译者吐槽：原文写的是256GB，吾派的壮哉！)
-
-	
-  * iPad 2:1GHz 双核Apple A5芯片，512MB DDR2 RAM
-
+	  * iPhone 3G:Samsung 32-bit RISC ARM11 620 MHz 处理器 (降频到 412 MHz), PowerVR MBX Lite 3D GPU, 128 MB eDRAM
+	  * iPhone 3GS: Samsung APL0298C05 芯片，ARM Cortex-A8架构，降频到600MHz(从833MHz)，集成PowerVR SGX 535 GPU，256 MB eDRAM。
+	  * iPhone 4:基于ARM Cortex-A8的Apple A4芯片，集成 PowerVR SGX 535 GPU，在iPad中频率为1GHz，iPhone 4中的频率没有披露(译者注：不都说是800MHz么，还有512MB RAM都忘了写了，不过这些不说大家也知道)
+	  * iPad 1:1GHz Apple A4芯片 256MB DDR Ram (译者吐槽：原文写的是256GB，吾派的壮哉！)
+	  * iPad 2:1GHz 双核Apple A5芯片，512MB DDR2 RAM
 
 这其中iPad 1和iPhone 4有相同的处理器，在Apple使用自家的芯片后我们看到了性能的明显提升，锁频的A4比之前的Cortex-A8+PowerVR SGC 535 GPU要快一倍
 
@@ -105,40 +84,20 @@ png格式的图片有alpha通道，jpeg则没有。png无损压缩，jpeg允许�
 
 1024×768分辨率，90%压缩质量的jpeg图片从加载，解压缩到渲染的时间：
 
-
-
-	
-  * iPhone 3G: 527 ms
-
-	
-  * iPhone 3GS: 134 ms
-
-	
-  * iPad: 79 ms
-
-	
-  * iPhone 4: 70 ms
-
-	
-  * iPad 2: 51 ms
+	* iPhone 3G: 527 ms
+	* iPhone 3GS: 134 ms
+	* iPad: 79 ms
+	* iPhone 4: 70 ms
+	* iPad 2: 51 ms
 
 
 同样是1024×768分辨率，对比优化和未优化的PNG图片
-
 	
-  * iPhone 3G: 866 ms – 1032 ms = 快16%
-
-	
-  * iPhone 3GS: 249 ms – 458 ms = 快46%
-
-	
-  * iPad: 130 ms – 256 ms = 快49%
-
-	
-  * iPhone 4: 179 ms – 309 ms = 快42%
-
-	
-  * iPad 2: 105 ms – 208 ms = 快49%
+	* iPhone 3G: 866 ms – 1032 ms = 快16%
+	* iPhone 3GS: 249 ms – 458 ms = 快46%
+	* iPad: 130 ms – 256 ms = 快49%
+	* iPhone 4: 179 ms – 309 ms = 快42%
+	* iPad 2: 105 ms – 208 ms = 快49%
 
 
 3GS的数据充分体现了优化过的png好处：比未优化的快一倍。
@@ -173,7 +132,10 @@ png格式的图片有alpha通道，jpeg则没有。png无损压缩，jpeg允许�
 
 综上我们可一看到红色区域(解压缩)总是消耗最多时间的部分，渲染(绘制)的时间仅取决于分辨率而不是压缩质量，因为像素占组要因素。
 
-通常100%质量的jpeg和优化过的png图片时间开销大致相同。我可以想到两个使用jpeg的理由：1）在设备上不能动态创建优化过的png 2）你只是需要一个完美的图片而不需要考虑磁盘空间开销
+通常100%质量的jpeg和优化过的png图片时间开销大致相同。我可以想到两个使用jpeg的理由：
+	
+	1）在设备上不能动态创建优化过的png 
+	2）你只是需要一个完美的图片而不需要考虑磁盘空间开销
 
 横向对比文件大小(文件大小的图表在下面)，可以看到从jpeg 10%到jpeg 90%的时间开销线性增长。
 
@@ -219,20 +181,19 @@ UIGraphicsEndImageContext();
 
 奇怪的是如果UIImage只是通过initWithContentsOfFile创建的，我不能始终保持这个解压缩的版本。所以我必须使用ImageIO framework(iOS 4之后可用) 中提供的一个选项来显式保持这个解压缩的版本:
 
-`NSDictionary *dict = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES]
-forKey:(id)kCGImageSourceShouldCache];`
+	NSDictionary *dict = [NSDictionary dictionaryWithObject:[NSNumber 	numberWithBool:YES]
+	forKey:(id)kCGImageSourceShouldCache];
 
 CGImageSourceRef source = CGImageSourceCreateWithURL((CFURLRef)url, NULL);
 CGImageRef cgImage = CGImageSourceCreateImageAtIndex(source, 0, (CFDictionaryRef)dict);
 
-`UIImage *retImage = [UIImage imageWithCGImage:cgImage];
-CGImageRelease(cgImage);
-CFRelease(source);
-`
+	UIImage *retImage = [UIImage imageWithCGImage:cgImage];
+	CGImageRelease(cgImage);
+	CFRelease(source);
 
 这样初始化图片就可以让解压缩仅发生一次：第一次解压缩消耗很长一段时间，第二次完全不消耗。这其中的关键就是kCGImageSourceShouldCache，你可以为CGImageSource和CGImageSourceCreateImageAtIndex使用这个选项，头文件中是这样说明的：
 
-`Specifies whether the image should be cached in a decoded form. The value of this key must be a CFBooleanRef; the default value is kCFBooleanFalse.`
+	Specifies whether the image should be cached in a decoded form. The value of this key must be a CFBooleanRef; the default value is kCFBooleanFalse.
 
 如果这个选项设置为NO，绘制图片的时间又会随着解压缩时间增长，如果设置为YES就仅仅解压缩一次。
 

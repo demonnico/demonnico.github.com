@@ -21,25 +21,13 @@ tags:
 首先我想把本地的一个字典程序换成command line的，google了一下有个朋友已经写好了一个[基于php的程序](http://code.google.com/p/chinese-dictionary/wiki/install)，这里我按照他的步骤安装了一下，发现在命令行里面输入dict的时候提示command not found.我猜测应该是.bashrc没有加载的缘故，之前只用过.bash_profile来设置一些环境变量，而.bashrc是我刚刚vi新建的。
 
 于是继续google,查询了一下[bash_profile和bashrc的一些区别](http://linux.chinaunix.net/doc/system/2005-02-03/1084.shtml)
-
-
-
 	
-  * <~/.bash_profile>每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该
-文件**仅仅执行一次**!默认情况下,他设置一些环境变量,执行用户的.bashrc文件.
-
-	
-  * <~/.bashrc>该文件包含专用于你的bash shell的bash信息,当登录时以及每次打开新的shell时,该
-该文件被读取
-
-	
-  * <~/.bash_logout>当每次退出系统(退出bash shell)时,执行该文件.
+	* <~/.bash_profile>每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件**仅仅执行一次**!默认情况下,他设置一些环境变量,执行用户的.bashrc文件.
+	* <~/.bashrc>该文件包含专用于你的bash shell的bash信息,当登录时以及每次打开新的shell时,该该文件被读取
+	* <~/.bash_logout>当每次退出系统(退出bash shell)时,执行该文件.
 
 
 于是我尝试command+n一个新的Terminal，还是没有加载dict命令,然后我又找到了[这篇文章](http://coder.aqualuna.me/2012/03/bashrc-in-mac-terminal-os-x-lion.html)，其中引用到一段话:
-
-
-> 
 
 > 
 > ### [Mac OS X — an exception](http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html)
@@ -50,16 +38,10 @@ tags:
 
 也就是说在mac是一朵奇葩，他每次都会重新加载.bash_profile中的设置，默认的时候并不会加载.bashrc，按照文章中说的，我在.bash_profile中加了一个判断:
 
-
-> 
-
 >     
 >     if [ -f ~/.bashrc ]; then
 >        source ~/.bashrc
 >     fi
-> 
-> 
+>  
 
-
-
-然后重新command+n一个新的Terminal,搞定～
+最后重新command+n一个新的Terminal,搞定～
