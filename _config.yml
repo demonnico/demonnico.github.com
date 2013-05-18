@@ -83,11 +83,11 @@ JB :
   comments :
     provider : disqus
     disqus :
-      short_name : jekyllbootstrap
+      short_name : demonNico
     livefyre :
       site_id : 123
     intensedebate :
-      account : 123abc
+      account : demon42111915@gmail.com
     facebook :
       appid : 123
       num_posts: 5
