@@ -3,7 +3,7 @@ author: demon
 comments: true
 date: 2013-05-18 14:17:56
 layout: post
-slug: ios%e7%a6%bb%e5%b1%8f%e7%bb%98%e5%88%b6%e7%9a%84%e6%80%a7%e8%83%bd%e5%92%8c%e6%9c%ba%e5%88%b6%e5%88%86%e6%9e%90
+slug: ios_offscreen_analysis
 title: iOS离屏绘制的性能和机制分析
 wordpress_id: 208
 categories:
