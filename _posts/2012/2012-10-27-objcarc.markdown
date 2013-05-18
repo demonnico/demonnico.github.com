@@ -1,0 +1,30 @@
+---
+author: demon
+comments: true
+date: 2012-10-27 15:44:44
+layout: post
+slug: objcarc
+title: objc的arc配置
+wordpress_id: 71
+categories:
+- IOS
+- 开发
+tags:
+- -fobj-arc
+- ARC
+- objc
+---
+
+xcode好像升级到4.3之后就多了个[ARC](http://clang.llvm.org/docs/AutomaticReferenceCounting.html)的选项，如果勾选这个属性的话，编译器编译的时候就会根据对象的一些属性(strong,weak等)设置，对.m文件中需要ARC的对象进行自引用计数，这样的话一方面来说降低了objc的学习门槛，但是如果同一个项目里面既有ARC写的.m又有非ARC的，那就需要对项目中具体的实现文件进行编译设置。
+
+因为之前做的项目都不是基于ARC的，所以刚开始也没有关注这一点，后来在github上看到一些有意思的开源的库基于ARC的，所以查了一下设置，在这里做一个记录:
+
+
+
+	
+  * 如果你的project是基于ARC的，那么在target的building pharses里面需要对非ARC的文件设置为:-fno-objc-arc
+
+	
+  * 反之，如果project是不基于ARC的，就需要对ARC的文件设置:-fobjc-arc
+
+

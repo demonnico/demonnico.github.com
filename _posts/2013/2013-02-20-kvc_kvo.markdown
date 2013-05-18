@@ -1,0 +1,89 @@
+---
+author: demon
+comments: true
+date: 2013-02-20 23:29:55
+layout: post
+slug: kvc_kvo
+title: KVC&KVO
+wordpress_id: 142
+categories:
+- IOS
+- 开发
+tags:
+- KVC
+- KVO
+---
+
+记得刚开始写objc的时候，从NSDictionary中获取数据的时候objectForKey和valueForKey是乱用的，想到用哪个就用哪个，反正返回的东西都是一样的。这几天看了一下KVC和KVO的东西，顺带也把之前的疑问也一起解决了。
+
+首先NSDictionary的objectForKey方法是属于NSDictionary的实例方法，而valueForKey则是KVC分类(NSObject(NSKeyValueCoding))下的方法，应该说只要是继承NSObject的对象，都拥有这个方法。
+
+    
+    NSObject* obj = [[[NSObject alloc] init] autorelease];
+    NSDictionary * dic = @[@"key":obj];
+
+
+<del>拿dic这个对象来说，[obj valueForKey:@"key"]和[obj objectForKey:@"key"]，返回的东西的确是相同的，但是如果这个Key不存在的情况下<key1,key2...>，objectForKey则返回Nil，valueForKey则会报错：</del>
+
+拿dic这个对象来说，[obj valueForKey:@"key"]和[obj objectForKey:@"key"]，返回的东西的确是相同的，我们继续看一下文档对这两个方法分别的说明：
+
+
+
+
+
+
+
+
+- (id)objectForKey:(id)aKey
+
+
+
+
+
+
+
+
+Returns the value associated with a given key.
+
+
+
+
+
+
+
+
+
+
+
+
+- (id)valueForKey:(NSString *)key
+
+
+
+
+
+
+
+
+Returns the value associated with a given key.
+
+
+
+
+
+
+
+
+If key does not start with “@”, invokes [objectForKey:](file:///Applications/Xcode.app/Contents/Developer/Documentation/DocSets/com.apple.adc.documentation.AppleiOS6.1.iOSLibrary.docset/Contents/Resources/Documents/documentation/Cocoa/Reference/Foundation/Classes/NSDictionary_Class/Reference/Reference.html#//apple_ref/occ/instm/NSDictionary/objectForKey:). If key does start with “@”, strips the “@” and invokes [super valueForKey:] with the rest of the key.
+
+
+
+
+也就是说假如我们的key不以@起头,valueForKey就是ObjectForKey一样。反之（@"@key"），则会调用super的KVC方法，valueForKey。那我们就会得到如下的结果：
+
+Terminating app due to uncaught exception ‘NSUnknownKeyException’, reason: ‘[<__NSCFDictionary 0x892fd80> valueForUndefinedKey:]: this class is not key value coding-compliant for the key theKey.’
+这里涉及到KVC(**Key-Value Coding**)的内容。简单地说在 KVC是一种间接访问对象属性（用字符串表征）的机制 ，我们可以通过查找对象accessor的同名字符串来获取对应的值，当然也可以在字典里取到相应key的一个value。KVC这样的设计，在我理解看来，所有对象都可以理解成字典。对象自身的property的取值和赋值都可以通过valueForKey和setValue:ForKey来进行（前提是这个Key<对象内部的属性>必须存在）。
+
+而KVO(**Key-Value Observing**)则基于KVC（只有符合KVC标准的对象才能试用KVO，继承NSObject的都可以），一种可以让我们观察对象内部属性变化的机制。听上去有点像通知(NSNotification)，但与通知不同的是，这个消息的post是由cocoa内部实现的，一旦属性发生变化我们就可以在添加observer的位置得到响应。
+
+附上一篇比较详细的[参考文章](http://www.cnblogs.com/dark-angel/archive/2011/05/05/2037734.html).
