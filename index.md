@@ -3,6 +3,20 @@ layout: page
 title: NICO
 tagline: we must chuck something in this shit life.
 ---
+
+------------
+
+喜欢技术，喜欢音乐。写过J2me,android,现在做iOS。
+
+无聊时打打游戏，听听音乐，弹弹吉他。
+
+[Github](https://github.com/demon1105)      ||
+[Weibo](http://weibo.com/demont)  			||
+[Facebook](http://www.facebook.com/demon1105)||
+[Twitter](http://twitter.com/demonNico) ||
+
+------------
+
 {% include JB/setup %}
 
 <ul class="posts">
