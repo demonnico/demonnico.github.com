@@ -21,27 +21,36 @@ tags:
 我要做的工作就是先在内存中先绘制一片和原图一样大小的区域(sourceSize)，然后得到纹理(texture)图中一小块切图区域的内存信息(frame)，最后通过sourceColorRect和offset对数据进行还原，将frame绘制到sourceSize中正确的位置，使它和原图的信息保持一致。
 
 在最后绘制CGImageRef的时候我用到了
-
-    
+{% highlight objc %}    
     /* Create an image. */
-    CG_EXTERN CGImageRef CGImageCreate(size_t width, size_t height,
-        size_t bitsPerComponent, size_t bitsPerPixel, size_t bytesPerRow,
-        CGColorSpaceRef space, CGBitmapInfo bitmapInfo, CGDataProviderRef provider,
-        const CGFloat decode[], bool shouldInterpolate,
-        CGColorRenderingIntent intent)
-
-
+    CG_EXTERN CGImageRef CGImageCreate
+    (
+    	size_t width,size_t height,
+        size_t bitsPerComponent,
+        size_t bitsPerPixel, size_t bytesPerRow,
+        CGColorSpaceRef space, 
+        CGBitmapInfo bitmapInfo, 
+        CGDataProviderRef provider,
+        const CGFloat decode[],
+         bool shouldInterpolate,
+        CGColorRenderingIntent intent
+    )
+{% endhighlight %}
 这个方法，在这里传递图像的信息是通过provider这个参数传入的，要得到这个对象我们则需要通过如下的方法创建：
 
-    
-    /* Create a direct-access data provider using `data', an array of `size'
-       bytes. `releaseData' is called when the data provider is freed, and is
-       passed `info' as its first argument. */
-    
-    CG_EXTERN CGDataProviderRef CGDataProviderCreateWithData(void *info,
-      const void *data, size_t size, CGDataProviderReleaseDataCallback releaseData)
-      CG_AVAILABLE_STARTING(__MAC_10_0, __IPHONE_2_0);
+{% highlight objc %}
+/* Create a direct-access data provider using `data`, an array of `size`
+bytes. `releaseData` is called when the data provider is freed, and is
+passed `info` as its first argument. */
 
+CG_EXTERN CGDataProviderRef CGDataProviderCreateWithData
+(
+	void *info,
+	const void *data,
+	size_t size, 
+	CGDataProviderReleaseDataCallback releaseData
+)// CG_AVAILABLE_STARTING(__MAC_10_0, __IPHONE_2_0);
+{% endhighlight %}
 
 在这个构建方法中我们可以将数据(data)作为第二个参数传入，具体各个参数的含义可以看注释
 
@@ -50,12 +59,12 @@ tags:
 如果仔细看CGDataProviderCreateWithData方法的注释，应该就能明白，正确的做法应该是实现自己的释放方法，然后将该方法作为CGDataProviderCreateWithData的最后一个参数进行传入，那么CGDataProviderRef释放的时候就会对该CGDataProviderReleaseDataCallback进行回调，在里面我们可以安全释放我们的图像数据。
 
 CGDataProviderReleaseDataCallback的写法可以参考下面的格式，具体的实现应该根据需求的不同而不同:
-
-    
-    static void providerReleaseData(void *info, const void *data, size_t size)
-    {
-        free((void *)data);
-    }
+{% highlight objc %}
+static void providerReleaseData(void *info, const void *data, size_t size)
+{
+	free((void *)data);
+}
+{% endhighlight %}
 
 
 

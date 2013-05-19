@@ -81,118 +81,114 @@ drawRect方法依赖Core Graphics框架来进行自定义的绘制，但这种�
 
 我们按照在之前的教程的相同步骤创建一个新的UIButton的子类，然后如下定义一些静态变量
 
+{% highlight objc %}    
+ // In CBHybrid.m
+ #import "CBHybrid.h"
+ @implementation CBHybrid
     
-    // In CBHybrid.m
-    #import "CBHybrid.h"
+// Resizable background image for normal state static UIImage *gBackgroundImage;
     
-    @implementation CBHybrid
+// Resizable background image for highlighted state static UIImage *gBackgroundImageHighlighted;
     
-    // Resizable background image for normal state
-    static UIImage *gBackgroundImage;
-    
-    // Resizable background image for highlighted state
-    static UIImage *gBackgroundImageHighlighted;
-    
-    // Background image border radius and height
-    static int borderRadius = 5;
-    static int height = 37;
+// Background image border radius and height
+ static int borderRadius = 5;
+ static int height = 37;
+{% endhighlight%}
 
 
 接下来我们把CBBezie内drawRect里的代码换个地方，通过一系列的改变之后：我们可以创建一个resizable的Image用来取代之前固定尺寸的Image，然后我们可以持有该静态对象并便于重用
 
-    
+{% highlight objc %}
     - (UIImage *)drawBackgroundImageHighlighted:(BOOL)highlighted {
         // Drawing code goes here
     }
+{% endhighlight %}
 
 
 首先，我们需要知道我们resizable Image的宽，为了优化性能，我们应该在图片的中间保留一个像素的宽
-
-    
-    float width = 1 + (borderRadius * 2);
-
-
+{% highlight objc %}
+float width = 1 + (borderRadius * 2);
+{% endhighlight %}
 高的话在这个case里就不是非常重要了，因为这个按钮的高度对渐变层来说已经足够可见，设置为37pt的话也是出于和其余几个按钮的高度相同的原因。
 
 搞定之后，我们需要一个bitmap context来进行绘制，搞起~
 
-    
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, height), NO, 0.0);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+{% highlight objc %}
+UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, height), NO, 0.0);
+CGContextRef context = UIGraphicsGetCurrentContext();
+CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+{% endhighlight %}
 
 
 UIGraphicsBeginImageContextWithOptions第二个参数为NO的话确保我们创建的Image context是透明的（带Alpha），最后的参数是scale factor(屏幕密度)，如果是0的话就是当前设备的默认scale factor。
 
 接下来的代码就和我们之前用Core Graphics来实现CBBezier的Demo里用到的非常相像了。我们用highlighted参数替换默认的self.highlighted属性，把用作更新界面的图像的信息值保存下来。
 
+{% highlight objc %}
+// Gradient Declarations
+// NSArray *gradientColors = ...
     
-    // Gradient Declarations
-    // NSArray *gradientColors = ...
+// Draw rounded rectangle bezier path
+UIBezierPath *roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(0, 0, width, height) cornerRadius: borderRadius];
     
-    // Draw rounded rectangle bezier path
-    UIBezierPath *roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(0, 0, width, height) cornerRadius: borderRadius];
+// Use the bezier as a clipping path
+[roundedRectanglePath addClip];
     
-    // Use the bezier as a clipping path
-    [roundedRectanglePath addClip];
+// Use one of the two gradients depending on the state of the button
+CGGradientRef background = highlighted? highlightedGradient : gradient;
     
-    // Use one of the two gradients depending on the state of the button
-    CGGradientRef background = highlighted? highlightedGradient : gradient;
+// Draw gradient within the path
+CGContextDrawLinearGradient(context, background, CGPointMake(140, 0), CGPointMake(140, height-1), 0);
     
-    // Draw gradient within the path
-    CGContextDrawLinearGradient(context, background, CGPointMake(140, 0), CGPointMake(140, height-1), 0);
+// Draw border
+// [borderColor setStroke...
     
-    // Draw border
-    // [borderColor setStroke...
-    
-    // Draw Inner Glow
-    // UIBezierPath *innerGlowRect...
+// Draw Inner Glow
+// UIBezierPath *innerGlowRect...
+{% endhighlight %}
 
 
 我们唯一需要添加的步骤就是，用UIGraphicsEndImageContext来保存图像信息，并且放到UIImage对象中。
 
+{% highlight objc %}
+UIImage* backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
     
-    UIImage* backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    // Cleanup
-    UIGraphicsEndImageContext();
-
-
-
+// Cleanup
+UIGraphicsEndImageContext();
+{% endhighlight %}
 
 现在我们已经完成了创建背景图片的方法，接下来我们必须实现一个通用的初始化方法用来实例化Images，并且把他们设置为CBHybird实例真正的背景。
+{% highlight objc %}
+- (void)setupBackgrounds {
 
-    
-    - (void)setupBackgrounds {
-    
-        // Generate background images if necessary
-        if (!gBackgroundImage &amp;&amp; !gBackgroundImageHighlighted) {
-            gBackgroundImage = [[self drawBackgroundImageHighlighted:NO] resizableImageWithCapInsets:UIEdgeInsetsMake(borderRadius, borderRadius, borderRadius, borderRadius) resizingMode:UIImageResizingModeStretch];
-            gBackgroundImageHighlighted = [[self drawBackgroundImageHighlighted:YES] resizableImageWithCapInsets:UIEdgeInsetsMake(borderRadius, borderRadius, borderRadius, borderRadius) resizingMode:UIImageResizingModeStretch];
-        }
-    
-        // Set background for the button instance
-        [self setBackgroundImage:gBackgroundImage forState:UIControlStateNormal];
-        [self setBackgroundImage:gBackgroundImageHighlighted forState:UIControlStateHighlighted];
+// Generate background images if necessary
+    if (!gBackgroundImage &&!gBackgroundImageHighlighted) {
+        gBackgroundImage = [[self drawBackgroundImageHighlighted:NO] resizableImageWithCapInsets:UIEdgeInsetsMake(borderRadius, borderRadius, borderRadius, borderRadius) resizingMode:UIImageResizingModeStretch];
+        gBackgroundImageHighlighted = [[self drawBackgroundImageHighlighted:YES] resizableImageWithCapInsets:UIEdgeInsetsMake(borderRadius, borderRadius, borderRadius, borderRadius) resizingMode:UIImageResizingModeStretch];
     }
 
+// Set background for the button instance
+    [self setBackgroundImage:gBackgroundImage forState:UIControlStateNormal];
+    [self setBackgroundImage:gBackgroundImageHighlighted 					forState:UIControlStateHighlighted];
+}
+{% endhighlight %}
 
 我们可以用custom的类型来实例化我们的CBHybird，当然也可以用initWithCoder，如果想用在代码里实现的话我们还可以用initWithFrame(···其实这里我是不想翻译的，原作者写得真是太详细了，第一次翻译技术文章，还是彻底点吧。。。)
-
+{% highlight objc %}
     
-    + (CBHybrid *)buttonWithType:(UIButtonType)type
-    {
-        return [super buttonWithType:UIButtonTypeCustom];
-    }
++ (CBHybrid *)buttonWithType:(UIButtonType)type
+{
+   return [super buttonWithType:UIButtonTypeCustom];
+}
     
-    - (id)initWithCoder:(NSCoder *)aDecoder {
-        self = [super initWithCoder:aDecoder];
-        if (self) {
-            [self setupBackgrounds];
-        }
-    
-        return self;
-    }
+- (id)initWithCoder:(NSCoder *)aDecoder 
+{
+	self = [super initWithCoder:aDecoder];
+	if (self) 
+       [self setupBackgrounds];
+    return self;
+}
+{% endhighlight %}
 
 
 为了确保我们新建的BHybird类能正常使用，在Interface Builder里我们赋值一个button，把实现类改成CBHybird后，把button的content内容改为_CGContext-generated image（_便于区分）。是驴是马，咱们cmd+R跑起来试试~

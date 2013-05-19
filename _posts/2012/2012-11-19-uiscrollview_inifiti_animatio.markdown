@@ -23,15 +23,9 @@ tags:
 
 2、无尽循环的话借用[StackOverFlow](http://stackoverflow.com/questions/2735804/objective-c-endless-uiscrollview-without-pagingenabled)上的一个思路，在首页index=0前面再加上一页，内容刚好是我们尾页的内容。在尾页最后刚好加上一页，内容刚好是首页的内容。最后滑动到首页或者尾页的时候，做一个伪处理:
 
-
-> 
-
->     
->     [_tv_scrollView scrollRectToVisible:<#(CGRect)#> animated:<#(BOOL)#>]
-> 
-> 
-
-
+{% highlight objc %}
+[_tv_scrollView scrollRectToVisible:rect animated:NO];
+{% endhighlight %} 
 
 关于第二点，找到了一篇[中文的](http://furnacedigital.blogspot.fr/2011/04/uiscrollview.html)，讲得还比较详细。
 

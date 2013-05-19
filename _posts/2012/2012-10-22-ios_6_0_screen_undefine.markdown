@@ -26,20 +26,20 @@ tags:
 说到这里，以为问题都解决了。于是运行了一个cocos2d的程序，结果发现还是有类似的旋转问题。网上一搜发现已经有很多人抛出了问题的解决方案：
 	
 首先还是和之前说的一样，需要在
-
-	-(BOOL)application:(UIApplication *)application 	didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-内设置根控制器对象，在这里我们可以根据自己的需要添加一下判断之后再进行处理
-	
-然后我们需要在RootViewController方法中根据需要实现另外两个委托方法
-    
-	- (NSUInteger) supportedInterfaceOrientations
-	{ 
-		return UIInterfaceOrientationMaskLandscape;
-	}
-	 - (BOOL) shouldAutorotate 
-	{
-		return YES;
-	}
+{% highlight objc %}
+-(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{% endhighlight %}
+内设置根控制器对象，在这里我们可以根据自己的需要添加一下判断之后再进行处理，然后我们需要在RootViewController方法中根据需要实现另外两个委托方法
+{% highlight objc %}    
+- (NSUInteger) supportedInterfaceOrientations
+{ 
+	return UIInterfaceOrientationMaskLandscape;
+}
+- (BOOL) shouldAutorotate 
+{
+	return YES;
+}
+{% endhighlight %}
 这里我看了一下，貌似之前的几个委托方法在6.0里面已经被放入到弃用的分类里了
 > 
 网上大部分的朋友解决方案到此就结束了，但是我的问题还是依旧。后来看了下发现原来程序target的summry一直都没有设置support interface orientations,设置了支持两种landscape模式之后，cmd+R.搞定·
