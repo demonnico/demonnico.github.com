@@ -26,7 +26,7 @@ tags:
 
 为了了解性能是如何受到影响的，我们需要进一步地观察iOS里图形实现背后的一些内容。下面这张图呈现了不同的frameworks和libraries之间的一些联系：
 
-![](http://photo.yupoo.com/demon42111915/CRYk1ku8/medish.jpg)
+![](http://pic.yupoo.com/demon42111915/CRYk1ku8/medish.jpg)
 
 在最顶层的就是UIKit，一个在iOS中用来管理用户图形交互的Objc高级的框架，它由一系列的集合类构成，例如UIButton、UILabel，每一个都负责他们指定的UI Control角色。UIKit本身构建在一个叫Core Animation的框架之上，它因为被用于处理更为强大的平滑的转场效果而引入OS X Leopard和iOS而出名。
 
@@ -53,12 +53,12 @@ tags:
 	
   1. 接入设备
   2. 在XCode的Developer Applications里打开Instruments（Command+Shift+i） ![](http://pic.yupoo.com/demon42111915/CRYj9u3F/medish.jpg)
-  3. 选择iOS>Graphics>Core Animation template ![](http://photo.yupoo.com/demon42111915/CRYj8kna/medish.jpg)
-  4. 打开详情面板，选择适当的窗口模式![](http://photo.yupoo.com/demon42111915/CRYj7Ik3/medish.jpg)[
+  3. 选择iOS>Graphics>Core Animation template ![](http://pic.yupoo.com/demon42111915/CRYj8kna/medish.jpg)
+  4. 打开详情面板，选择适当的窗口模式![](http://pic.yupoo.com/demon42111915/CRYj7Ik3/medish.jpg)[
 ]	
   5. 选择你的target设备	
   6. 检查Color Offscreen-Rendered Yellow的debug选项
-  7. 在你设备上所有的离屏绘制都会呈现出黄色的色调![](http://photo.yupoo.com/demon42111915/CRYj7ix4/medish.jpg)
+  7. 在你设备上所有的离屏绘制都会呈现出黄色的色调![](http://pic.yupoo.com/demon42111915/CRYj7ix4/medish.jpg)
 
 
 现在让我们逐一检查上一篇文章里涉及的一些技术点的性能表现。
@@ -197,7 +197,7 @@ UIGraphicsBeginImageContextWithOptions第二个参数为NO的话确保我们创�
 
 为了确保我们新建的BHybird类能正常使用，在Interface Builder里我们赋值一个button，把实现类改成CBHybird后，把button的content内容改为_CGContext-generated image（_便于区分）。是驴是马，咱们cmd+R跑起来试试~
 
-![](http://photo.yupoo.com/demon42111915/CRYj7cxT/medish.jpg)
+![](http://pic.yupoo.com/demon42111915/CRYj7cxT/medish.jpg)
 
 完整的子类实现代码在[这里](https://github.com/demon1105/custom-UIButton/blob/master/Custom%20UIButtons/CBHybrid.m)~~~
 

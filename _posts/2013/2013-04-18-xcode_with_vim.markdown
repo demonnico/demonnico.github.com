@@ -19,15 +19,15 @@ tags:
 
 装好插件原本的编辑窗口就变成了下面这个样子，在Editor和Console之间多了一条VI交互窗口·
 
-![XVim](http://photo.yupoo.com/demon42111915/CS0s6IQO/medish.jpg)
+![XVim](http://pic.yupoo.com/demon42111915/CS0s6IQO/medish.jpg)
 
 如果你不想用的话可以在Edit下面去掉XVim的勾选
 
-![XVim_select](http://photo.yupoo.com/demon42111915/CS0s6Lyy/medish.jpg)
+![XVim_select](http://pic.yupoo.com/demon42111915/CS0s6Lyy/medish.jpg)
 
 这里对我来说有个小冲突，Vim进入交互模式是Esc，xcode的代码补全快捷方式我也习惯使用Esc(其实command+.也可以，看自己洗好了)，用了XVim之后就Esc就没截获了，可以command+,进入偏好设置，设置另外的代码不全快捷键
 
-![Screen Shot 2013-04-18 at 9.49.40 PM](http://photo.yupoo.com/demon42111915/CS0s7KvZ/medish.jpg)
+![Screen Shot 2013-04-18 at 9.49.40 PM](http://pic.yupoo.com/demon42111915/CS0s7KvZ/medish.jpg)
 
 最后附上[Xcode的主题](https://github.com/demon1105/xcode-theme)(和我的iterm差不多一个风格)。
 
