@@ -7,6 +7,7 @@ slug: designing-for-ios-graphics-performance
 title: iOS图形处理和性能
 wordpress_id: 203
 categories:
+- 翻译
 tags:
 - CALayer
 - CPU

@@ -7,6 +7,7 @@ slug: ios_offscreen_analysis
 title: iOS离屏绘制的性能和机制分析
 wordpress_id: 208
 categories:
+- 翻译
 tags:
 - CALayer
 - IOS
