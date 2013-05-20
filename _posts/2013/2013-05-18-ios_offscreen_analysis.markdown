@@ -6,12 +6,14 @@ layout: post
 slug: ios_offscreen_analysis
 title: iOS离屏绘制的性能和机制分析
 wordpress_id: 208
+keywords: UIKit performence 性能 CoreGraphics
+description: UIKit性能分析
 categories:
 - 翻译
 tags:
 - CALayer
-- IOS
-- performentce
+- iOS
+- performence
 - UIKit
 ---
 
