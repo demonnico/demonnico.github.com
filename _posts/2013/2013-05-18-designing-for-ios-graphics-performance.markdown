@@ -52,13 +52,23 @@ tags:
 
 	
   1. 接入设备
-  2. 在XCode的Developer Applications里打开Instruments（Command+Shift+i） ![](http://pic.yupoo.com/demon42111915/CRYj9u3F/medish.jpg)
-  3. 选择iOS>Graphics>Core Animation template ![](http://pic.yupoo.com/demon42111915/CRYj8kna/medish.jpg)
-  4. 打开详情面板，选择适当的窗口模式![](http://pic.yupoo.com/demon42111915/CRYj7Ik3/medish.jpg)[
-]	
+  
+  2. 在XCode的Developer Applications里打开Instruments（Command+Shift+i）   
+  ![](http://pic.yupoo.com/demon42111915/CRYj9u3F/medish.jpg)
+  
+  3. 选择iOS>Graphics>Core Animation template
+  ![](http://pic.yupoo.com/demon42111915/CRYj8kna/medish.jpg)
+  
+  4. 打开详情面板，选择适当的窗口模式    
+  ![](http://pic.yupoo.com/demon42111915/CRYj7Ik3/medish.jpg)
+  
   5. 选择你的target设备	
+  
   6. 检查Color Offscreen-Rendered Yellow的debug选项
-  7. 在你设备上所有的离屏绘制都会呈现出黄色的色调![](http://pic.yupoo.com/demon42111915/CRYj7ix4/medish.jpg)
+  
+  7. 在你设备上所有的离屏绘制都会呈现出黄色的色调
+  
+  ![](http://pic.yupoo.com/demon42111915/CRYj7ix4/medish.jpg)
 
 
 现在让我们逐一检查上一篇文章里涉及的一些技术点的性能表现。
