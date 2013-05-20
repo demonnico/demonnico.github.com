@@ -22,8 +22,7 @@ tags:
     NSObject* obj = [[[NSObject alloc] init] autorelease];
     NSDictionary * dic = @[@"key":obj];
 
-<!--<del>拿dic这个对象来说，[obj valueForKey:@"key"]和[obj objectForKey:@"key"]，返回的东西的确是相同的，但是如果这个Key不存在的情况下<key1,key2...>，objectForKey则返回Nil，valueForKey则会报错：</del>
-!-->
+~~拿dic这个对象来说，[obj valueForKey:@"key"]和[obj objectForKey:@"key"]，返回的东西的确是相同的，但是如果这个Key不存在的情况下<key1,key2...>，objectForKey则返回Nil，valueForKey则会报错：~~
 拿dic这个对象来说，[obj valueForKey:@"key"]和[obj objectForKey:@"key"]，返回的东西的确是相同的，我们继续看一下文档对这两个方法分别的说明：
 
 	- (id)objectForKey:(id)aKey
