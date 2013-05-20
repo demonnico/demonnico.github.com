@@ -9,7 +9,6 @@ wordpress_id: 128
 categories:
 - IOS
 - 开发
-- 未分类
 tags:
 - touchEvent
 - UIControl
