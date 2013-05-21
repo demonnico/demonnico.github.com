@@ -24,6 +24,10 @@ tagline: we must chuck something in this shit life.
     <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>
+------------
+[LinkYan](http://www.linkyan.com) | [Kevin's](http://www.zhuwenbo.net/)
+
+------------
 
 <!--## To-Do
 
