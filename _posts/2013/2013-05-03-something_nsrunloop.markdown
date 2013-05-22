@@ -7,7 +7,7 @@ slug: something_nsrunloop
 title: NSRunloop的简单认识
 wordpress_id: 193
 categories:
-- IOS
+- iOS
 - 开发
 tags:
 - RunLoop

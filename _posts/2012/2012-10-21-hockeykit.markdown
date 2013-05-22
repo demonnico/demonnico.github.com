@@ -7,11 +7,11 @@ slug: hockeykit
 title: HockeyKit
 wordpress_id: 24
 categories:
-- IOS
+- iOS
 - 开发
 tags:
 - HockeyKit
-- IOS
+- iOS
 - OTA
 ---
 
@@ -32,7 +32,7 @@ tags:
 	8. 打开stats目录下的.htaccess文件可以针对当前目录的访问权限等进行适当配置
 	9. 在我们上文中的_public_目录下创建你的应用子目录，用APP的bundle name进行命名，以便区分
 	10. 将hockeykit/server/php/public/test中所有的目录copy到我们在服务器下的创建的public中
-	11. 在设备中访问xxx.xxx.xxx.x/xxx/public，应该能看到一个基本的界面了，里面包含了我们在上一步中放入public中的一些ios的应用（如果是android设备的话看到的应该是一些android的应用）
+	11. 在设备中访问xxx.xxx.xxx.x/xxx/public，应该能看到一个基本的界面了，里面包含了我们在上一步中放入public中的一些iOS的应用（如果是android设备的话看到的应该是一些android的应用）
 	12. 点击install application，如果出现alertview提示错误，重新回到步骤2检查一下是否设置了_AllowOverride All
 
 

@@ -13,7 +13,7 @@ tags:
 - CPU
 - GPU
 - Graphics
-- IOS
+- iOS
 - perfermence
 ---
 

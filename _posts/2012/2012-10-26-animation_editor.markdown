@@ -7,7 +7,7 @@ slug: animation_editor
 title: cocos2d的一些动画编辑器
 wordpress_id: 66
 categories:
-- IOS
+- iOS
 - 开发
 - 开发工具
 tags:

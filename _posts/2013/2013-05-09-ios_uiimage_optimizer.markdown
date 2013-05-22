@@ -7,10 +7,10 @@ slug: ios_uiimage_optimizer
 title: iOS如何避免图像解压缩的时间开销（转）
 wordpress_id: 198
 categories:
-- IOS
+- iOS
 - 开发
 tags:
-- IOS
+- iOS
 - UIImageView
 - UITableView
 - 优化

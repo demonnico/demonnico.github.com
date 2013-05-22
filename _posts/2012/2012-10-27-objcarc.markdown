@@ -7,7 +7,7 @@ slug: objcarc
 title: objc的arc配置
 wordpress_id: 71
 categories:
-- IOS
+- iOS
 - 开发
 tags:
 - -fobj-arc

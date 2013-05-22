@@ -7,7 +7,7 @@ slug: auto_create_objc-c_model
 title: 自动导出objc-c的Model
 wordpress_id: 86
 categories:
-- IOS
+- iOS
 - 开发
 - 开发工具
 tags:
