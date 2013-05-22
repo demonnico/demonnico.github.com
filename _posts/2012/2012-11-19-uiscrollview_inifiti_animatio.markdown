@@ -7,7 +7,7 @@ slug: uiscrollview_inifiti_animatio
 title: UIScrollView做无尽循环滚动
 wordpress_id: 104
 categories:
-- IOS
+- iOS
 - 开发
 tags:
 - UIScrollView

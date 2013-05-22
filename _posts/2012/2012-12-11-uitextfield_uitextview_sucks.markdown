@@ -7,7 +7,7 @@ slug: uitextfield_uitextview_sucks
 title: UITextField与UITextView一起使用的奇怪问题
 wordpress_id: 120
 categories:
-- IOS
+- iOS
 - 开发
 tags:
 - textFieldShouldReturn

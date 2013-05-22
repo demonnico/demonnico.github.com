@@ -8,7 +8,7 @@ title: TexturePacker纹理图对UIImage的支持
 wordpress_id: 94
 categories:
 - Cocos2d
-- IOS
+- iOS
 - 开发
 - 开发工具
 tags:

@@ -7,7 +7,7 @@ slug: quincykit_crashreport
 title: QuincyKit的crashReport框架
 wordpress_id: 116
 categories:
-- IOS
+- iOS
 - skills
 - 开发
 - 开发工具

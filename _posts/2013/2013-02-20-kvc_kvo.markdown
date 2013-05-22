@@ -7,7 +7,7 @@ slug: kvc_kvo
 title: KVC&KVO
 wordpress_id: 142
 categories:
-- IOS
+- iOS
 - 开发
 tags:
 - KVC

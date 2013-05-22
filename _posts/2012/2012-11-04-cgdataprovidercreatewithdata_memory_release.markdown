@@ -7,7 +7,7 @@ slug: cgdataprovidercreatewithdata_memory_release
 title: CGDataProviderCreateWithData对内存数据的释放
 wordpress_id: 91
 categories:
-- IOS
+- iOS
 - skills
 - 开发
 tags:
@@ -54,7 +54,7 @@ CG_EXTERN CGDataProviderRef CGDataProviderCreateWithData
 
 在这个构建方法中我们可以将数据(data)作为第二个参数传入，具体各个参数的含义可以看注释
 
-创建CGDataProviderRef对象后有个问题我们需要注意的是，当我们使用完该对象需要对这个对象进行释放，当然我们malloc出来的数据区域也要进行free，释放CGDataProviderRef对象我们需要用到CGDataProviderRelease，而我们的data却不能在此时立即free掉，否则就会看到创建出的图片在绘制的屏幕上之后数据不对，出现花屏的情况。在这里我推断有可能IOS在绘制UIImage的时候使用的内存信息只是作了一个简单的引用指向，所以我们立即释放data的话就会造成数据错误。
+创建CGDataProviderRef对象后有个问题我们需要注意的是，当我们使用完该对象需要对这个对象进行释放，当然我们malloc出来的数据区域也要进行free，释放CGDataProviderRef对象我们需要用到CGDataProviderRelease，而我们的data却不能在此时立即free掉，否则就会看到创建出的图片在绘制的屏幕上之后数据不对，出现花屏的情况。在这里我推断有可能iOS在绘制UIImage的时候使用的内存信息只是作了一个简单的引用指向，所以我们立即释放data的话就会造成数据错误。
 
 如果仔细看CGDataProviderCreateWithData方法的注释，应该就能明白，正确的做法应该是实现自己的释放方法，然后将该方法作为CGDataProviderCreateWithData的最后一个参数进行传入，那么CGDataProviderRef释放的时候就会对该CGDataProviderReleaseDataCallback进行回调，在里面我们可以安全释放我们的图像数据。
 

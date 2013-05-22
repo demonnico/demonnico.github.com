@@ -8,7 +8,7 @@ title: cocos2d中实现黑白动画（RGB-> Grayscale）
 wordpress_id: 107
 categories:
 - Cocos2d
-- IOS
+- iOS
 - 开发
 tags:
 - Cocos2d

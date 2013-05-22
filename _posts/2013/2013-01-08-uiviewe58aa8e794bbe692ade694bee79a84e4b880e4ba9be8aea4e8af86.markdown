@@ -7,7 +7,7 @@ slug: uiview%e5%8a%a8%e7%94%bb%e6%92%ad%e6%94%be%e7%9a%84%e4%b8%80%e4%ba%9b%e8%a
 title: UIView动画播放的一些认识
 wordpress_id: 132
 categories:
-- IOS
+- iOS
 - 开发
 tags:
 - animation

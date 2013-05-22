@@ -7,7 +7,7 @@ slug: cocoapods
 title: CocoaPods
 wordpress_id: 82
 categories:
-- IOS
+- iOS
 - 开发
 - 开发工具
 tags:

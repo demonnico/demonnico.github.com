@@ -7,7 +7,7 @@ slug: uiscrollview-touchevent_something
 title: UIScrollView touchEvent的一些认识
 wordpress_id: 128
 categories:
-- IOS
+- iOS
 - 开发
 tags:
 - touchEvent
