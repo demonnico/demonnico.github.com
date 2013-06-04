@@ -3,7 +3,7 @@ author: demon
 comments: true
 date: 2012-12-23 13:23:27
 layout: post
-slug: ios-exchange-google_contacts_dela
+slug: ios-exchange-google_contacts_delay
 title: iOS Exchange google联系人延迟
 wordpress_id: 124
 categories:
