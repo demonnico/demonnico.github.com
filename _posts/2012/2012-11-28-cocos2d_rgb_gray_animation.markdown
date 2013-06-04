@@ -3,7 +3,7 @@ author: demon
 comments: true
 date: 2012-11-28 23:24:50
 layout: post
-slug: cocos2d_rgb_gray%ef%bc%89
+slug: cocos2d_rgb_gray_animation
 title: cocos2d中实现黑白动画（RGB-> Grayscale）
 wordpress_id: 107
 categories:
@@ -14,7 +14,7 @@ tags:
 - Cocos2d
 - grayscale
 - opengl
-- 动态纹理
+- 动态纹理- 
 ---
 
 在做Hero项目战斗模块的时候碰到一个需求，说要实现一个Sprite动画，效果是从全彩慢慢变到黑白（灰度图）。刚开始以为用TintTo就能解决了，用了一下之后发现其实Tint其实是一个着色的过程，并不能达到自己要的效果。
