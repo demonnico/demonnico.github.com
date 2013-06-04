@@ -4,7 +4,7 @@ comments: true
 date: 2013-02-20 23:29:55
 layout: post
 slug: kvc_kvo
-title: KVC&KVO
+title: KVC_KVO
 wordpress_id: 142
 categories:
 - iOS
