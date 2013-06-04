@@ -3,7 +3,7 @@ author: demon
 comments: true
 date: 2013-01-08 20:58:45
 layout: post
-slug: uiview%e5%8a%a8%e7%94%bb%e6%92%ad%e6%94%be%e7%9a%84%e4%b8%80%e4%ba%9b%e8%ae%a4%e8%af%86
+slug: uiview_something_interactive
 title: UIView动画播放的一些认识
 wordpress_id: 132
 categories:
@@ -12,7 +12,8 @@ categories:
 tags:
 - animation
 - UIView
-- userInteraction
+- userInteractive
+
 ---
 
 如果对一个UIView做一个动画，刚开始都是用最原始的写法：
