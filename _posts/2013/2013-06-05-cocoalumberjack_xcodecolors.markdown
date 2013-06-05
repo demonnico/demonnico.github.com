@@ -20,7 +20,7 @@ tags:
 
 前几天在[唐巧](http://blog.devtang.com/)的微信公共账号（iosDevTips）里，收到一条关于如何在开发的时候，在控制台中更友好地输出Log的消息。里面大致提到了三个方案
 
- * 用Emoji放到每行行首，作为区分。（From [汤圣罡](http://lextang.com/)(tang sheng gang，第三个字我去查了:D）
+ * 用Emoji放到每行行首，作为区分。（From [汤圣罡](http://lextang.com/) tang sheng gang，第三个字我去查了:D）
  * 基于[CocoaLumberjack](https://github.com/robbiehanson/CocoaLumberjack)的开源方案
  * AppCode，有插件可以设置Log着色(From 黎伟)
  
