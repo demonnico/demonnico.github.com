@@ -57,7 +57,7 @@ You may occasionally notice that colors don't work when you're debugging your ap
 * Select "Run" (on the left), and then the "Arguments" tab
 * Add a new Environment Variable named "XcodeColors", with a value of "YES"
 
-最后重新Cmd+R一次，搞定，我在Xcode4.4和Xcode6.0上都做过测试，都是可以的。所以在我这里目前不存在Xcode版本不一致而造成彩色日志输出失败的问题。如果有朋友按照如上的步骤设置还是不成功，欢迎在评论里留言提出疑问，一起讨论。
+最后重新Cmd+R一次，搞定，我在Xcode4.4和Xcode4.6上都做过测试，都是可以的。所以在我这里目前不存在Xcode版本不一致而造成彩色日志输出失败的问题。如果有朋友按照如上的步骤设置还是不成功，欢迎在评论里留言提出疑问，一起讨论。
 
 最后附上真相
 
