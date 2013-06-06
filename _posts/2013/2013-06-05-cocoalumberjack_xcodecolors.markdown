@@ -6,6 +6,7 @@ date: 2013-06-05 22:22:00
 layout: post
 slug: cocoalumberjack_xcodecolors
 title: Colorful XCode Console
+wordpress_id: 208
 keywords: XCode CocoaLumberjack XcodeColors 彩色输出
 description: 让你的XCode输出Colorful
 categories:
