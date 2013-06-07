@@ -6,7 +6,7 @@ tagline: we must chuck something in this shit life.
 
 ------------
 
-喜欢技术，喜欢音乐。写过J2me,android,现在做iOS。
+喜欢技术，喜欢音乐。写过J2me、android，现在做iOS。
 
 无聊时打打游戏，听听音乐，弹弹吉他。
 

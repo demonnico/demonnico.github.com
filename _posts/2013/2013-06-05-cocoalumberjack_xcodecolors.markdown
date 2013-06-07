@@ -63,5 +63,7 @@ You may occasionally notice that colors don't work when you're debugging your ap
 
 ![](https://raw.github.com/demon1105/ImagesLib/master/color_log.png)
 
+------------------
+今天微博上有位叫[开星儿](http://weibo.com/kaixinger)的朋友提到了[这篇文章](http://bluedogtech.blogspot.com/2010/12/global-log-level-control-with.html)，感兴趣的朋友可以翻过去看一下，你应该不会后悔。
 
 
