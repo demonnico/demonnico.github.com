@@ -22,7 +22,7 @@ tags:
 
 还有一个想和大家分享的和XCode5有关，之前在@onevcat的blog上看到一篇介绍XCode5特点的文章（不过因为NDA的关系，目前这几篇文章都暂时看不到了，不过可以借助google大神），其中有一点我这里想提的是，类似如下的注释：
 
-```
+{% highlight objc %}
 /**
  * Setup a recorder for a specified file path. After setting it, you can use the other control method to control the shared recorder.
  *
@@ -30,7 +30,7 @@ tags:
  * @returns YES if recorder setup correctly, NO if there is an error
  */
 - (BOOL)recordWithFilePath:(NSString *)talkingPath;
-```
+{% endhighlight %}
 
 在XCode5中将直接被检测到并集成进代码提示中，并且在Quick Help中也会有相关的提示。文章提到，可用的标识符除了上面的```@param``` 和 ```@return``` 外，还有例如``` @see``` ，``` @discussion ```等，关于Javadoc的更多格式规则，可以参考 [Wiki](http://en.wikipedia.org/wiki/Javadoc)。
 
