@@ -35,7 +35,7 @@ tags:
 
 我把runloop理解为一种cocoa下的一种消息循环的机制，用来处理各种消息事件。我们在开发的时候一般并不需要手动去创建一个runloop，因为在程序进入mainThread之后其实就为我们创建了默认的的mainRunLoop，通过[NSRunloop currentRunLoop]我们就可以得到当前线程对应的RunLoop对象，而我们需要留意的是在多个runloop之间消息的通知方式。
 
-接上面说到的，开启一个NSTimer实质上是开启了一个新的线程(Runloop)，也就是说除了MainRunloop之外还有一个Runloop存在。而当scrollView在滚动的时候，当前MainRunLoop是处于UITrackingRunLoopMode，在该模式下，不会处理 NSDefaultRunLoopMode的消息，而NSTimer在创建后的RunLoop(B)默认会以NSDefaultRunLoopMode与当前context的runloop(A)发送消息。要想在scrollView滚动的同时也接受其他runloop的消息，则需要改变两者之间的RunLoopMode
+接上面说到的，开启一个NSTimer实质上是~~开启了一个新的线程(Runloop)~~在当前Runloop中注册了一个新的事件源，~~也就是说除了MainRunloop之外还有一个Runloop存在~~。而当scrollView在滚动的时候，当前MainRunLoop是处于UITrackingRunLoopMode，在该模式下，不会处理 NSDefaultRunLoopMode的消息（因为Runloop Model不一致），而NSTimer在创建后的RunLoop(B)默认会以NSDefaultRunLoopMode与当前context的Runloop(A)~~发送消息~~进行通信。要想在scrollView滚动的同时也接受其他runloop的消息，则需要改变两者之间的RunLoopMode
 
     
      [[NSRunLoop currentRunLoop] addTimer:timer
