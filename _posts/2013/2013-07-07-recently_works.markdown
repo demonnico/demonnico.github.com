@@ -36,6 +36,9 @@ tags:
 
 但是真正的高潮还没到，类似如上的注释如果一个一个去敲，岂不是太反人类了？所以这里奉上一个自动在[XCode中添加注释的脚本还有设置方法](http://blog.chukong-inc.com/index.php/2012/05/16/xcode4_fast_doxygen/)，结合这个脚本，写注释应该会变成一件很爽的事情。所以也希望大家以后养成勤写注释，写好注释的好习惯:D
 
+------
+[@onevcat](http://onevcat.com/) 最近刚完成了一个自动注释的[插件](https://github.com/onevcat/VVDocumenter-Xcode)，功能已经差不多了，可以关注一下。
+
 ------------------
 还有如下的一些文章，感兴趣的朋友也可以学习一下
 
