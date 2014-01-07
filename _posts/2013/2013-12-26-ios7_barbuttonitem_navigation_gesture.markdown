@@ -34,3 +34,6 @@ tags:
 PS：附上一个UIView的[category库](https://github.com/demon1105/UIView-Utils)，如果你是在代码里布局而不是通过IB的的话，应该用得到:D
 
 Over.
+
+----
+附上一篇[@雨lei不是人](http://blog.sina.com.cn/yzykhq) 的[推荐方案👍](http://keighl.com/post/ios7-interactive-pop-gesture-custom-back-button/)
