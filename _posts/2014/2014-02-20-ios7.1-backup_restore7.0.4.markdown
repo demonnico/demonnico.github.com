@@ -1,0 +1,26 @@
+---
+author: demon
+comments: true
+date: 2014-02-20 22:00:00
+layout: post
+slug: iOS7.1 iOS7.0.4 backup restore
+title: 如何将新版本的备份资料恢复至旧的iOS系统上
+categories:
+- iOS
+- backup
+tags:
+- iOS7.1
+- backup
+- restore
+---
+今天终于入了[Reveal](revealapp.com)（公司给报销），于是想着把自己手机给越狱了，[reveal一下别的app玩玩](http://blog.csdn.net/yiyaaixuexi/article/details/18220875)。因为目前[jailbreak](http://evasi0n.com/)暂时只支持iOS7.0.5及以下的版本，而自己手机之前升到了iOS7.1Beta5，所以又要把系统给降下来。
+
+在restore系统之前用itunes backup了一下，一些就那么自然地开始了。等最后准备恢复刚才的backup的时候发现，itunes提示手机系统太久了（因为Backup是在iOS7.1beta5上建立的），心里真是有一万只草泥马在奔腾。
+
+当然办法总是有的，首先冷静下来，找到ituens在本地的backup目录`~/Library/Application\ Support/MobileSync/Backup/`，然后打开对应的备份目录文件夹，按类别进行排序之后发现，有几个plist文件值得研究一下。大致浏览了一遍，`Manifest.plist`主要保存了已经安装在iPhone上的app的一些bundle信息，`State.plist `包含了一些上次备份的状态信息。
+
+`Info.plist`文件打开后豁然开朗，有几个Key让我激动了一下。一个是`Build Version`，还有一个是`Product Version`，这两者目前保存的都是7.1Beta5的版本信息，我将`Build Version`改为11B554a（7.0.4的Build Version，google或者找个7.0.4手机看一下都可以），`Product Version`改为当前手机的系统版本（7.0.4）。
+
+最后退出重启一下iTunes，找到先前无法restore的backup，再试一次~搞定。
+
+PS:此方法亲测在iOS7.0.4->iOS7.1上有效，不保证iOS6的备份也可以。尝试之前请先另外备份`Info.plist`文件
