@@ -70,15 +70,16 @@ tags:
 	·在项目配置的过程中，多target的方案需要做一些鼠标选择的操作。多pod方案只需要替换pod中的资源（命名都是一致的）。	
 	·在配置结束后的调试阶段，多target方案选择不同的target之后run即可，多pod方案则需要更改podfile后update（每次pod update觉得慢的同学可以试试--no-repo-update参数）。
 	
-最后补充一个多pod方案不足的地方，因为切换pod之后重新run相当于只是修改了`Info-common.plist`的`Bundle identifier`，在模拟器上调试的时候会出现Xcode无法直接进入调试模式的问题。状况如下：
+~~最后补充一个多pod方案不足的地方，因为切换pod之后重新run相当于只是修改了`Info-common.plist`的`Bundle identifier`，在模拟器上调试的时候会出现Xcode无法直接进入调试模式的问题。状况如下：~~
 
 ![](https://raw.githubusercontent.com/demon1105/ImagesLib/master/bug-xcode.png)
 
-同样的情况会发生在新建Project运行之后，更改`Info.plist`的`Bundle identifier`，然后再run一次。解决这个bug的方法是在下一次run之前先退出模拟器就可以了。但是如果在真机上进行调试，everything gonna be ok。
+~~同样的情况会发生在新建Project运行之后，更改`Info.plist`的`Bundle identifier`，然后再run一次。解决这个bug的方法是在下一次run之前先退出模拟器就可以了。但是如果在真机上进行调试，everything gonna be ok。~~
+####（当当当！该问题在Xcode6.0上面已经完美解决）
 
-总结一下，多target方案麻烦在项目的设置上，多pod方案麻烦在模拟器的调试阶段上（上面提到的bug），其实这两个办法都有些美中不足。写这篇文章的目的也并不是比个孰优孰劣，只是提供了一个新的思路去完成开篇时提到的业务需求。
+总结一下，多target方案麻烦在项目的设置上，~~多pod方案麻烦在模拟器的调试阶段上（上面提到的bug），其实这两个办法都有些美中不足。~~写这篇文章的目的也并不是比个孰优孰劣，只是提供了一个新的思路去完成开篇时提到的业务需求。
 
-PS：如果在多pod方案中的bug有可以解决的办法，请告诉我。谢谢
+~~PS：如果在多pod方案中的bug有可以解决的办法，请告诉我。谢谢~~
 
 Over
 
