@@ -14,7 +14,7 @@ tags:
 - Swift
 ---
 
-最近Swift风头正兴，让我有种感觉不写几行Swift的东西都不好意思说自己是做iOS开发的了不祥预感。
+最近Swift风头正兴，让我有种不写几行Swift代码都不好意思说自己是做iOS开发的不祥预感。
 
 在[StackOverFlow](http://stackoverflow.com/questions/22900499/how-to-transition-from-uicollectionview-to-uiviewcontroller-like-pinterest-evern/24399337#24399337)上有人问Pinterest中转场的效果是如何实现的，在Pinterest的[Blog](http://engineering.pinterest.com/post/67769846580/behind-the-pins-building-pinterest-3-0-for-ios)上工程师大致对Pinterest的结构作了大致的介绍（这里再次对他们的开放态度再次钦佩），但是没有涉及到具体动画部分的实现。
 
