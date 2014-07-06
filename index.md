@@ -25,9 +25,6 @@ tagline: we must chuck something in this shit life.
   {% endfor %}
 </ul>
 ------------
-[唐巧](http://blog.devtang.com/) | [LinkYan](http://www.linkyan.com) | [Kevin's](http://www.zhuwenbo.net/)
-
-------------
 
 <!--## To-Do
 
