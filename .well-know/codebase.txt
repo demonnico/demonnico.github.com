@@ -1,0 +1,77 @@
+==================================================================
+https://keybase.io/demonnico
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://www.taofengping.com
+  * I am demonnico (https://keybase.io/demonnico) on keybase.
+  * I have a public key with fingerprint 4F29 DF51 438E F0DA 6D12  325E A80B 7A46 78AB FAFA
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "client": {
+            "name": "keybase.io node.js client",
+            "version": "0.4.14"
+        },
+        "key": {
+            "fingerprint": "4f29df51438ef0da6d12325ea80b7a4678abfafa",
+            "host": "keybase.io",
+            "key_id": "A80B7A4678ABFAFA",
+            "uid": "ff637861f52ee449f8c26f12f34c7c00",
+            "username": "demonnico"
+        },
+        "merkle_root": {
+            "ctime": 1407300926,
+            "hash": "e1731907cf15caf1ec67193cde1a9a9f633e4a3bed165699df085082e735463d87b053ca17c314b26e3aca68d02ec2917569615980e6019f8d6bf8ece811d183",
+            "seqno": 33740
+        },
+        "service": {
+            "hostname": "www.taofengping.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1407301110,
+    "expire_in": 157680000,
+    "prev": "29f9d2b6b8d675ed7625bfbf3d1d7f86cf0115ade150a2b0ca123363fc6bbcb0",
+    "seqno": 5,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG/MacGPG2 v2.0.22 (Darwin)
+Comment: GPGTools - https://gpgtools.org
+
+owFVkm9oVlUcx5/plu2xWTALnEpyKaUYT+fcc+855z6i7lGYLyKJplaKPZ2/z3O3
+Pfc+u/c++6MsCiq2F5WDYUQgiKGDLCrmo0ZS05iFeyFCEdiIELQCnf2xaC+qc8ei
+vK/uvef7/Z7v53fOwZalmWzDxPL9nYPvzs83XPyRZ7q+P/n7AYuHcsjKH7BEr6+C
+JH0LWEVZeatHDXEWq5wfrgtCqXLd8bpFTbvVr6LYDwOjAjknBx1ruD3Vp27tByUV
+VSM/DbMcbXtSu9BBVGkgGZbQRrarGAWcMAcTyrhmmpnMchgnd2xrLWQWfWn+FijY
+SgqpvrC1s9BZMGu1hQWtMSIUQ+3aSjmOp6mwsYa2Ro4gAoBUGKtokUmqShgEvgjT
+whUV9fSqYhSGC9gi8VMNdABBAHg2NpVYXDYuBQmCHiBCQ1cwDZXABHpISAWZxzzT
+ACmHIa4kxC72DDCgLqC2Ish1MJKUcOAiwSARCDrcxgoxwTCVwFbC9iAxJgxdjwKF
+ATQIEnNNlVAUQgkpMgyx6gtCK48QccBw+hn1+0KltdOxLdINDAzkEhZqFZSq5hRy
+IqwYazUKk1CEvUZQTpJqPkVPhqonFxyKFxezitwPpHH9/3Shkd4xFgghaLfUYNWP
+VNFPFS7BFJgn3Uf1m0jb0560OeaGgrhKEmy7XHONJJREUyy0SXGZmZ0LmM2BGYuN
+EEZaYM4FB//BuqYnK5nI2C8FLKlFyhoebVjTmGnIZu5qWpJe30y2+b5/73TX1WV/
+OVNHb7396dd/H5l8YeJB+57sE+UXr7e3bQ9/OFcbb1w9OT0xd+0Rb+6VFfvG9rXp
+ganffl59TR17YGRy1anax23burbVp7qffpMNXoivPHbUvRl/vv/x1vtHd/eONNU/
+wPrWex1jN2/MXnl2ZMc3z3/1yY17X3vr4Y2bKvNf+Fdvt/y5Y8PephqfPrw2ORL/
+Oj77Zc/czKH62Gd9jQ+tv71z+9jpZ557PT9zItvy/tLJp/ZMy9mzP310+Zf+XRvo
+ysub9Msbm9/Zu7bv1daXxs8d4qOXnjzTcWHZrg/P447dly4uJzPdK+qnW5vv3rKl
+5frmRw+e+u6N8s4z50s8WiNXbl4ynVt1uP6Hdez4t/P/AA==
+=SJ1d
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/demonnico
+
+==================================================================
