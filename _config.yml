@@ -118,7 +118,7 @@ JB :
   # Set 'provider' to false to turn sharing off globally.
   # Settings for all other include helpers can be defined by creating 
   sharing :
-     provider : all
+     provider : no
      twitter :
          size :
          via :
