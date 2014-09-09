@@ -24,8 +24,9 @@ tags:
 
 GPUImage中的条件语句如下：
 
-```
-- (void)dealloc;
+{% highlight objc %}
+
+- (void)dealloc
 {
     [self destroyDataFBO];
 
@@ -44,7 +45,7 @@ GPUImage中的条件语句如下：
     }
 #endif
 }
-```
+{% endhighlight %}
 
 这里判断了当前系统支持的最小版本是否小于6.0，如果你在管理第三方库的时候没有用到Cocoapods，那应该说大多数情况下这么判断是没有问题的。但是如果用到了Cocoapods，细心的你会发现在GPUImage的pod里，compile sources的flag中多了一项`DOS_OBJECT_USE_OBJC=0`。
 
