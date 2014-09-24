@@ -14,6 +14,12 @@ tags:
 - Cocoapods
 ---
 
+***
+GPUImage的作者BardLarson已经merge了我的[RP](https://github.com/BradLarson/GPUImage/pull/1751)，
+该问题已解决。
+不过既然都到这里了，我还是建议看完这篇文章，或许对你有帮助:P
+***
+
 事情的起因是产品出了一个需求，要对Camera做实时模糊的效果。
 
 首先我想到的是用GPUImage来做，但是在使用GPUImage滤镜的时候发现每次都会出现[内存泄露](https://github.com/demon1105/GPUImageLeakDemo)，而且几乎所有滤镜都会有[泄漏](https://github.com/BradLarson/GPUImage/issues/1681)。后来想到了CoreImage内置了模糊的滤镜，而且CoreImage也支持硬件加速，于是放弃了GPUImage的方案，用CoreImage取而代之（iOS8已经支持[自定义Kernel](https://developer.apple.com/library/prerelease/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS8.html)了，感兴趣的可以移步[这里](http://holko.pl/2014/07/21/motion-blur/)）。
