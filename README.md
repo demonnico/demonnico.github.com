@@ -1,3 +1,2 @@
-# WOW
+# BLOG
 
-just move to [here](https://gitcafe.com/Nicholas/Nicholas)
