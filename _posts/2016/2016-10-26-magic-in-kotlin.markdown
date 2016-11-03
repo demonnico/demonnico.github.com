@@ -1,7 +1,7 @@
 ---
 author: demon
 comments: true
-date: 2016-11-03 22:05:00
+date: 2016-10-26 22:05:00
 layout: post
 slug: Kotlin Magic Java Swift
 title: Kotlin的黑魔法
