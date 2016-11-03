@@ -24,7 +24,7 @@ tags:
 
 我们先来看一段Java代码
 ##Java
-```java
+{% highlight java %}
 public class Student { 
     public Student(String name) {
             this.name = name;
@@ -80,13 +80,14 @@ public class Student { 
     }
  }
 
-```
+{% endhighlight %}
+
 上面这段代码非常简单，我们声明了一个`Student`的类，它有两个构造方法，分别是单参和多参，为了控制访问，我们需要对所有的成员变量设置`getter`和`setter`，这种做法在Java代码里应该已经司空见惯了。为了方便调试，我们重写了`toString`方法，如果调用`toString`则会把当前对象的一些基本信息作为字符串返回。
 
 接下来我们可以看一下在`Kotlin`下的实现：
 
 ##Kotlin
-```kotlin
+{% highlight kotlin %}
 //kotlin特有的构造方法声明语法
 class Student(var name: String){
      var gender: Int = 0 //I’m property, not a member or field
@@ -109,7 +110,8 @@ class Student(var name: String){
 	   "age" to age, 
 	   "bodyHeight" to bodyHeight).toString()
    }
-```
+{% endhighlight %}
+
 不熟悉的同学可能会疑惑，在`Kotlin`下`getter`和`setter`都去了哪里？不用担心，`Kotlin`并没有帮我们把访问限制去掉。只是我们在编码的时候不用在代码显式地写出来(你说这些都可以用快捷键自动生成啊？好吧我承认这位同学你的代码量比我的又多了不少，我认输。。。)。如果需要添加自己的访问控制的时候才需要进行声明。
 
 还有一个需要提到很重要的特性的是，`Kotlin`支持 `懒加载`。也就是说当某些成员被声明为`lazy`的时候，他们只在第一次被访问的时候才进行初始化。设想一下，在Java中我们需要写自己的懒加载逻辑，而在`Kotlin`里在语法中就原生支持了这个现代语言特性。
@@ -121,8 +123,8 @@ class Student(var name: String){
 我们可以轻松看到`Kotlin`其实在编译成`class`的时候和`Java`并无差异，但是由于我们在编码的时候因为使用了`Kotlin`，生产力大大提升。
 
 最后出场的是Swift
-##Swift
-```swift
+
+{% highlight swift %}
 class Student {
     var name: String
     var email = ""
@@ -149,7 +151,8 @@ class Student {
         return name + email + String(age) + String(gender) + String(bodyHeight)
     }
 }
-```
+{% highlight swift %}
+
 从语法特征来看，`Swift`和`Kotlin`简直神似。但如果正真使用过这两种语言编码之后，我发现`Kotlin`在类型推导上做得更好。在声明一些闭包类型的时候，我就遇到过在`Kotlin`语义下是可以被识别的而在`Swift`下无法编译通过的例子。这也是我在用这两种语言做业务开发过程中遇到过最为头疼的事。
 
 接下就让我们一起来看看`Kotlin`里有哪些黑魔法吧。
