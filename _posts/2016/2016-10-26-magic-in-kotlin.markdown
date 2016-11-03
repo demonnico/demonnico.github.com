@@ -20,7 +20,7 @@ tags:
 
 这篇文章不会对 Kotlin 的语法细节进行讨论，我会通过一些代码片段对比Kotlin、Swift、和Java，之后重点会对 Kotlin 中的Delegated properties(属性委托，Kotlin中许多重要的特性都是基于该特性)进行说明，最后再进行简单的总结。
 
-#Java、Kotkin、Swift，都拉出来溜溜
+#Java、Kotlin、Swift，都拉出来溜溜
 
 我们先来看一段Java代码
 ##Java
@@ -123,7 +123,7 @@ class Student(var name: String){
 我们可以轻松看到`Kotlin`其实在编译成`class`的时候和`Java`并无差异，但是由于我们在编码的时候因为使用了`Kotlin`，生产力大大提升。
 
 最后出场的是Swift
-
+##Swift
 {% highlight swift %}
 class Student {
     var name: String
