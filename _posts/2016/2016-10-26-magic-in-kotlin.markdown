@@ -16,7 +16,7 @@ tags:
 - java
 ---
 
-本人目前主要做 iOS 相关的开发工作，但在做 iOS 之前曾经用 Java 写过一些 Android 上的应用，所以基本上算是个半吊子的 Android 开发工程师。在经历 Swift 的洗礼之后，看到 Kotlin 就感觉看到了久违的朋友一般。发现 ATA 里已经有一些很不错的关于 Kotlin 相关知识的精彩文章，在这里我会结合自己的一些实战经历，以及之前在线下开发者分享会的时候整理的资料，说一下自己的一些心得体会。希望可以给想了解这门语言的同学带来一些帮助和新的启发。
+本人目前主要做 iOS 相关的开发工作，但在做 iOS 之前曾经用 Java 写过一些 Android 上的应用，所以基本上算是个半吊子的 Android 开发工程师。在经历 Swift 的洗礼之后，看到 Kotlin 就感觉看到了久违的朋友一般。在这里我会结合自己的一些感受，以及之前在线下开发者分享会的时候整理的资料，说一下自己的一些心得体会。希望可以给想了解这门语言的同学带来一些帮助和新的启发。
 
 这篇文章不会对 Kotlin 的语法细节进行讨论，我会通过一些代码片段对比Kotlin、Swift、和Java，之后重点会对 Kotlin 中的Delegated properties(属性委托，Kotlin中许多重要的特性都是基于该特性)进行说明，最后再进行简单的总结。
 
@@ -24,7 +24,7 @@ tags:
 
 我们先来看一段Java代码
 ##Java
-{% highlight java %}
+```java
 public class Student { 
     public Student(String name) {
             this.name = name;
@@ -80,14 +80,14 @@ public class Student { 
     }
  }
 
-{% endhighlight %}
+```
 
 上面这段代码非常简单，我们声明了一个`Student`的类，它有两个构造方法，分别是单参和多参，为了控制访问，我们需要对所有的成员变量设置`getter`和`setter`，这种做法在Java代码里应该已经司空见惯了。为了方便调试，我们重写了`toString`方法，如果调用`toString`则会把当前对象的一些基本信息作为字符串返回。
 
 接下来我们可以看一下在`Kotlin`下的实现：
 
 ##Kotlin
-{% highlight kotlin %}
+```kotlin
 //kotlin特有的构造方法声明语法
 class Student(var name: String){
      var gender: Int = 0 //I’m property, not a member or field
@@ -110,7 +110,7 @@ class Student(var name: String){
 	   "age" to age, 
 	   "bodyHeight" to bodyHeight).toString()
    }
-{% endhighlight %}
+```
 
 不熟悉的同学可能会疑惑，在`Kotlin`下`getter`和`setter`都去了哪里？不用担心，`Kotlin`并没有帮我们把访问限制去掉。只是我们在编码的时候不用在代码显式地写出来(你说这些都可以用快捷键自动生成啊？好吧我承认这位同学你的代码量比我的又多了不少，我认输。。。)。如果需要添加自己的访问控制的时候才需要进行声明。
 
@@ -124,7 +124,7 @@ class Student(var name: String){
 
 最后出场的是Swift
 ##Swift
-{% highlight swift %}
+```swift
 class Student {
     var name: String
     var email = ""
@@ -151,7 +151,7 @@ class Student {
         return name + email + String(age) + String(gender) + String(bodyHeight)
     }
 }
-{% highlight swift %}
+```
 
 从语法特征来看，`Swift`和`Kotlin`简直神似。但如果正真使用过这两种语言编码之后，我发现`Kotlin`在类型推导上做得更好。在声明一些闭包类型的时候，我就遇到过在`Kotlin`语义下是可以被识别的而在`Swift`下无法编译通过的例子。这也是我在用这两种语言做业务开发过程中遇到过最为头疼的事。
 
