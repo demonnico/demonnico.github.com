@@ -257,7 +257,7 @@ var User.tel: String by PropertyAttachedDelegation()
 是不是很轻松？一劳永逸。自我感觉比`Objective-C`下的做法还优雅不少。
 
 # 总结
-除了上文中提到的一些实战技巧，附件有我之前在线下分享时做的一个Keynote，有兴趣的同学也可以下载下来看看，内容比这篇短文也要丰富些。总的来说`Kotlin`非常容易上手，对有`swift`经验的`iOS`开发者来说尤其友好。如果你有过一些`Android`开发经验或者说你正想学习`Android`开发又不想写`Java`的话，在我看来`Kotlin`是一个非常好的选择。
+除了上文中提到的一些实战技巧，附件有我之前在线下分享时做的一个[Keynote](https://www.icloud.com/keynote/000SDjKQAvs2PkV0W03CDPk5w#Programming_Android_In_Kotlin)，有兴趣的同学也可以下载下来看看，内容比这篇短文也要丰富些。总的来说`Kotlin`非常容易上手，对有`swift`经验的`iOS`开发者来说尤其友好。如果你有过一些`Android`开发经验或者说你正想学习`Android`开发又不想写`Java`的话，在我看来`Kotlin`是一个非常好的选择。
 
 参考文章：
 
