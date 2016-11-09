@@ -20,10 +20,10 @@ tags:
 
 这篇文章不会对 Kotlin 的语法细节进行讨论，我会通过一些代码片段对比Kotlin、Swift、和Java，之后重点会对 Kotlin 中的Delegated properties(属性委托，Kotlin中许多重要的特性都是基于该特性)进行说明，最后再进行简单的总结。
 
-#Java、Kotlin、Swift，都拉出来溜溜
+# Java、Kotlin、Swift，都拉出来溜溜
 
 我们先来看一段Java代码
-##Java
+## Java
 
 ```java
 public class Student { 
@@ -87,7 +87,7 @@ public class Student { 
 
 接下来我们可以看一下在`Kotlin`下的实现：
 
-##Kotlin
+## Kotlin
 
 ```kotlin
 //kotlin特有的构造方法声明语法
@@ -125,7 +125,8 @@ class Student(var name: String){
 我们可以轻松看到`Kotlin`其实在编译成`class`的时候和`Java`并无差异，但是由于我们在编码的时候因为使用了`Kotlin`，生产力大大提升。
 
 最后出场的是Swift
-##Swift
+
+## Swift
 
 ```swift
 class Student {
@@ -160,9 +161,9 @@ class Student {
 
 接下就让我们一起来看看`Kotlin`里有哪些黑魔法吧。
 
-#黑魔法篇
+# 黑魔法篇
 
-##Function extension
+## Function extension
 在很多地方，我们都可以看到`Kotlin`原生支持了类似`Objective-c`下的`Category`特性，在`Kotlin`下我们把这个特性叫做`Function extension`。也就是说我们可以给任何已存在的类添加方法，包括在Java中的一些基本类型，而不是只能通过继承他们在子类中声明我们的方法。这个特性对我来说简直是`killing feature`一般的存在。这里我举一个具体的例子来说明`Function extension`到底有多重要。
 
 在`Java`的世界里，我们经常会写各种Util工具类，声明很多静态方法用于类型或者字符串转换。例如我们想对一个基本类型(比如`Float`类型)转换为字符串，并进行一定的控制，比如下图中的这几种情况：
@@ -186,7 +187,7 @@ fun Double.Yuan(): String{
 
 或许有人会问了，那既然可以给已存在的类添加方法，那是否可以添加属性(成员)呢？答案是肯定的。但`Kotlin` 官网的文档里并没有提及，我们在下面的篇幅里会详细介绍`Delegated properties`这个黑魔法，进而引申出`Property extension`的一种实现。
 
-##Delegated properties
+## Delegated properties
 [Delegated properties(委托属性)](!https://kotlinlang.org/docs/reference/delegated-properties.html)在`Kotlin`里是一种非常重要的实现机制，许多重要的特性可以基于`Delegated properties`来实现的。除了上文中提及的`Function Extension`之外，像`Lazy`和`lateinit`特性也都可以视作基于`Delegated properties`的一种特性实现，并且我们还可以基于它来做一些属性观察(实时监听property的变化，类似`Objective-C`中的`KVO`)的事情。`Delegated properties`使用起来非常简单，在申明变量的时候，跟上`by`关键字，后面声明的就是我们的代理类。废话不多说，上码
 
 ```kotlin
@@ -211,7 +212,7 @@ class PropertyAttachedDelegation{
 
 那我们在实际开发过程中`Delegated properties`有什么用处呢？
 
-##Property extension
+## Property extension
 `Kotlin`官网中并没有提到`Property extension`，这只是我基于`Delegated properties`和`Delegated properties`特性的一个延伸。简单说，我们可以在`Kotlin`里轻松实现给已有的类添加新的成员变量这个特性(在`Objective-C`里我们可以基于`Category`和运行时库的`objc_associate`特性实现)。Takling is cheap, show me the code，上码：
 
 ```kotlin
@@ -252,7 +253,7 @@ var User.tel: String by PropertyAttachedDelegation()
 ```
 是不是很轻松？一劳永逸。自我感觉比`Objective-C`下的做法还优雅不少。
 
-#总结
+# 总结
 除了上文中提到的一些实战技巧，附件有我之前在线下分享时做的一个Keynote，有兴趣的同学也可以下载下来看看，内容比这篇短文也要丰富些。总的来说`Kotlin`非常容易上手，对有`swift`经验的`iOS`开发者来说尤其友好。如果你有过一些`Android`开发经验或者说你正想学习`Android`开发又不想写`Java`的话，在我看来`Kotlin`是一个非常好的选择。
 
 参考文章：
