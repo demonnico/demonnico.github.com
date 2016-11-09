@@ -203,11 +203,13 @@ class Example {
 ```kotlin
 class PropertyAttachedDelegation{
 	operator fun getValue(thisRef: Any?, property: KProperty<*>): String {
-	     return ""
+		return ""
 	} 	
 	operator fun setValue(thisRef: Any?, property: KProperty<*>, value: String){
 	
 	}
+}
+
 ```
 这里简单说明一下，在外部访问上文中`Example`对象的`member`属性时，会触发`PropertyAttachedDelegation `的`getValue`方法，相应地如果在对`member`赋值时，会触发`setValue`方法。其中`thisRef`代表的是被访问对象的`this`引用，`property`参数是`KProperty`类型，会体现当前`PropertyAttachedDelegation`所修饰`member`成员对象的一些运行时特性(类似Java中的反射机制)，例如成员变量名、类型等。最后的`value`则是通过set方法需要传入的值。
 
