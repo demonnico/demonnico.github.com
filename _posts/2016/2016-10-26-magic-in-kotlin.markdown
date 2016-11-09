@@ -24,6 +24,7 @@ tags:
 
 我们先来看一段Java代码
 ##Java
+
 ```java
 public class Student { 
     public Student(String name) {
@@ -87,6 +88,7 @@ public class Student { 
 接下来我们可以看一下在`Kotlin`下的实现：
 
 ##Kotlin
+
 ```kotlin
 //kotlin特有的构造方法声明语法
 class Student(var name: String){
@@ -124,6 +126,7 @@ class Student(var name: String){
 
 最后出场的是Swift
 ##Swift
+
 ```swift
 class Student {
     var name: String
@@ -194,7 +197,6 @@ class Example {
 ```
 
 这里的`PropertyAttachedDelegation`就是我们声明的委托类。`PropertyAttachedDelegation`的具体实现如下：
-
 
 ```kotlin
 class PropertyAttachedDelegation{
