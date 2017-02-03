@@ -10,7 +10,7 @@ tagline: we must chuck something in this shit life.
 
 无聊时打打游戏，听听音乐，弹弹吉他。
 
-[Github](https://github.com/demon1105)      ||
+[Github](https://github.com/demonnico)      ||
 [Weibo](http://weibo.com/demont)  			||
 [Facebook](http://www.facebook.com/demon1105)||
 [Twitter](http://twitter.com/demonNico) ||
