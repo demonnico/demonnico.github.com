@@ -28,22 +28,22 @@ tags:
 
 ```java
 public class Student { 
-    public Student(String name) {
-            this.name = name;
+	public Student(String name) {
+		this.name = name;
 	} 
 	public Student(String name, int gender) {
-        this(name);
-        this.gender = gender;
-    } 	
+		this(name);
+		this.gender = gender;
+	} 
 	private String name;
 	private int gender;
 	private String email;
 	private int age;
 	private float bodyHeight;
-    
-    @Override
-    public String toString() {
-    	HashMap<String, String> map = new HashMap<>();
+
+	@Override
+	public String toString() {
+		HashMap<String, String> map = new HashMap<>();
 		map.put("name", name);
 		map.put("email", email);
 		map.put("age", String.valueOf(age));
@@ -51,35 +51,35 @@ public class Student { 
 		return map.toString();
 	} 
 	public float getBodyHeight() {
-	     return bodyHeight;
+		return bodyHeight;
 	}
 	public void setBodyHeight(float bodyHeight) {
-	     this.bodyHeight = bodyHeight;
+		this.bodyHeight = bodyHeight;
 	}
 	public String getName() {
-        return name;
+		return name;
 	}
 	public void setName(String name) {
-	     this.name = name;
-	} 	
+		this.name = name;
+	} 
 	public int getGender() {
-	     return gender;
-	} 	
+		return gender;
+	} 
 	public void setGender(int gender) {
-	  this.gender = gender;
+		this.gender = gender;
 	} 
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	} 
-    public int getAge() {
-    	return age;     }
-    
-    public void setAge(int age) {
-    	this.age = age;
-    }
+	}
+	public int getAge() {
+		return age; 
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
  }
 
 ```
@@ -92,27 +92,29 @@ public class Student { 
 
 ```kotlin
 //kotlin特有的构造方法声明语法
-class Student(var name: String){
-     var gender: Int = 0 //I’m property, not a member or field
-    var email: String? = null //支持optional类型
-    var age: Int = 0
-	lateinit var firstName: String 	val isBoy by lazy { gender == 1 }
+class Student(var name: String) {
+	var gender: Int = 0 //I’m property, not a member or field
+	var email: String? = null //支持optional类型
+	var age: Int = 0
+	lateinit var firstName: String 
+	val isBoy by lazy { gender == 1 }
 	//如果需要声明构造方法，需要使用constructor关键字
 	constructor(name: String, gender: Int): this(name){
 		 this.email = email
 		 this.gender = gender
 		 firstName = name
-    }
-    var bodyHeight = 0f
-        set(value) { field = value }
-        get() { return field }    
-   
-    override fun toString() = mapOf(
-	   "name" to name, 
-   	   "email" to email,
-	   "age" to age, 
-	   "bodyHeight" to bodyHeight).toString()
-   }
+	}
+	var bodyHeight = 0f
+		set(value) { field = value }
+		get() { return field }    
+
+	override fun toString() = mapOf(
+		"name" to name, 
+		"email" to email,
+		"age" to age, 
+		"bodyHeight" to bodyHeight).toString()
+	}
+}
 ```
 
 不熟悉的同学可能会疑惑，在`Kotlin`下`getter`和`setter`都去了哪里？不用担心，`Kotlin`并没有帮我们把访问限制去掉。只是我们在编码的时候不用在代码显式地写出来(你说这些都可以用快捷键自动生成啊？好吧我承认这位同学你的代码量比我的又多了不少，我认输。。。)。如果需要添加自己的访问控制的时候才需要进行声明。
@@ -131,30 +133,30 @@ class Student(var name: String){
 
 ```swift
 class Student {
-    var name: String
-    var email = ""
-    var age = 0
-    var gender = 0
+	var name: String
+	var email = ""
+	var age = 0
+	var gender = 0
 	lazy var isBoy: Bool = { return self.gender==1 }()
-    var bodyHeight: Float{
-        set{
-            bodyHeight = newValue
-        }
-        get{
-            return self.bodyHeight
-        }
-    }
-    init(name: String){
-        self.name = name
-    }
-    convenience init(name: String, gender: Int){
-        self.init(name: name)
-        self.gender = gender
-    }
-    
-    var description: String{
-        return name + email + String(age) + String(gender) + String(bodyHeight)
-    }
+	var bodyHeight: Float{
+		set {
+			bodyHeight = newValue
+		}
+		get {
+			return self.bodyHeight
+		}
+	}
+	init(name: String) {
+		self.name = name
+	}
+	convenience init(name: String, gender: Int) {
+		self.init(name: name)
+		self.gender = gender
+	}
+	
+	var description: String {
+		return name + email + String(age) + String(gender) + String(bodyHeight)
+	}
 }
 ```
 
@@ -193,9 +195,8 @@ fun Double.Yuan(): String{
 
 ```kotlin
 class Example {
-  var member: String by PropertyAttachedDelegation()
+	var member: String by PropertyAttachedDelegation()
 }
-
 ```
 
 这里的`PropertyAttachedDelegation`就是我们声明的委托类。`PropertyAttachedDelegation`的具体实现如下：
@@ -204,7 +205,7 @@ class Example {
 class PropertyAttachedDelegation{
 	operator fun getValue(thisRef: Any?, property: KProperty<*>): String {
 		return ""
-	} 	
+	} 
 	operator fun setValue(thisRef: Any?, property: KProperty<*>, value: String){
 	
 	}
@@ -219,9 +220,7 @@ class PropertyAttachedDelegation{
 `Kotlin`官网中并没有提到`Property extension`，这只是我基于`Delegated properties`和`Delegated properties`特性的一个延伸。简单说，我们可以在`Kotlin`里轻松实现给已有的类添加新的成员变量这个特性(在`Objective-C`里我们可以基于`Category`和运行时库的`objc_associate`特性实现)。Takling is cheap, show me the code，上码：
 
 ```kotlin
-data class User(val name: String? = null,
-				  val age: Int = 0,
-				  val gender:Int =0)
+data class User(val name: String? = null, val age: Int = 0, val gender:Int =0)
 ```
 我们新建了一个叫做`User`的[`data class`](!https://kotlinlang.org/docs/reference/data-classes.html)，现在只有`name`、`age`、`gender`三个成员属性。如果我想在不修改`User`类的情况下，添加一个叫做`email`的成员，可以这么做：
 
@@ -235,8 +234,9 @@ class PropertyAttachedDelegation<T>{
 	//variablesMap是一个字典类型，类似HashMap
 	operator fun getValue(thisRef: Any?, property: KProperty<*>): T {
 		return thisRef?.variablesMap?.get(property.toString()) as T
-	}  	operator fun setValue(thisRef: Any?, property: KProperty<*>, value: String){
-	    thisRef?.variablesMap?.set(property.toString(), value)
+	}  
+	operator fun setValue(thisRef: Any?, property: KProperty<*>, value: String){
+		thisRef?.variablesMap?.set(property.toString(), value)
 	}
 }
 ```
@@ -257,11 +257,11 @@ var User.tel: String by PropertyAttachedDelegation()
 是不是很轻松？一劳永逸。自我感觉比`Objective-C`下的做法还优雅不少。
 
 # 总结
-除了上文中提到的一些实战技巧，附件有我之前在线下分享时做的一个[Keynote](https://www.icloud.com/keynote/000SDjKQAvs2PkV0W03CDPk5w#Programming_Android_In_Kotlin)，有兴趣的同学也可以下载下来看看，内容比这篇短文也要丰富些。总的来说`Kotlin`非常容易上手，对有`swift`经验的`iOS`开发者来说尤其友好。如果你有过一些`Android`开发经验或者说你正想学习`Android`开发又不想写`Java`的话，在我看来`Kotlin`是一个非常好的选择。
+除了上文中提到的一些实战技巧，附件有我之前在线下分享时做的一个 [Keynote](https://www.icloud.com/keynote/000SDjKQAvs2PkV0W03CDPk5w#Programming_Android_In_Kotlin)，有兴趣的同学也可以下载下来看看，内容比这篇短文也要丰富些。总的来说`Kotlin`非常容易上手，对有`swift`经验的`iOS`开发者来说尤其友好。如果你有过一些`Android`开发经验或者说你正想学习`Android`开发又不想写`Java`的话，在我看来`Kotlin`是一个非常好的选择。
 
 参考文章：
 
-[Kotlin Reference](!https://kotlinlang.org/docs/reference/)
+[Kotlin Reference](https://kotlinlang.org/docs/reference/)
 
 
 
