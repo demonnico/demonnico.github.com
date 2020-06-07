@@ -140,10 +140,10 @@ class Student {
 	lazy var isBoy: Bool = { return self.gender==1 }()
 	var bodyHeight: Float{
 		set {
-			bodyHeight = newValue
+			_bodyHeight = newValue
 		}
 		get {
-			return self.bodyHeight
+			return _bodyHeight
 		}
 	}
 	init(name: String) {
