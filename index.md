@@ -11,7 +11,8 @@ tagline: we must chuck something in this shit life.
 无聊时打打游戏，听听音乐，弹弹吉他。
 
 [Github](https://github.com/demonnico)      ||
-[Weibo](http://weibo.com/demont)  	
+[Weibo](http://weibo.com/demont)  		    ||
+[Twitter](https://twitter.com/NichoIasTau)
 
 ------------
 
